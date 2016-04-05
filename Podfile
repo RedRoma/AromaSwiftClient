@@ -23,7 +23,7 @@ target 'AromaSwiftClient' do
 
 end
 
-target 'AromaSwiftTests' do
+target 'AromaSwiftClientTests' do
 
 end
 

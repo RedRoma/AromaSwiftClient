@@ -1,14 +1,15 @@
 //
-//  AromaSwiftTests.swift
-//  AromaSwiftTests
+//  AromaSwiftClientTests.swift
+//  AromaSwiftClientTests
 //
 //  Created by Juan Wellington Moreno on 4/4/16.
 //  Copyright © 2016 RedRoma, Inc. All rights reserved.
 //
 
 import XCTest
+@testable import AromaSwiftClient
 
-class AromaSwiftTests: XCTestCase {
+class AromaSwiftClientTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
