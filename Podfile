@@ -18,6 +18,10 @@ source 'https://bitbucket.org/RedRoma/red-roma-cocoa-specs.git'
 pod 'AromaThrift', :git => 'https://github.com/RedRoma/aroma-thrift.git', :branch => 'develop'
 #===============================
 
+#===============================
+# SWIFT EXCEPTION CATCHER
+pod 'SwiftExceptionCatcher', :git => 'https://github.com/RedRoma/SwiftExceptionCatcher.git'
+#===============================
 
 target 'AromaSwiftClient' do
 
