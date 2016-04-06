@@ -33,6 +33,13 @@ public class AromaClient {
     }
     
     public static var TOKEN_ID: String = ""
+    private static var APP_TOKEN: ApplicationService_ApplicationToken? {
+        guard !TOKEN_ID.isEmpty else { return nil }
+        
+        let token = ApplicationService_ApplicationToken()
+        token.tokenId = TOKEN_ID
+        return token
+    }
     
 
     static func createThriftClient() -> ApplicationService_ApplicationService {
@@ -51,7 +58,7 @@ public class AromaClient {
             return
         }
         
-        let request = message.createRequestObject()
+        let request = toRequestObject(message)
         let client = createThriftClient()
         
         do {
@@ -73,6 +80,28 @@ public class AromaClient {
         
     }
 
-   
+}
+
+extension AromaClient {
     
+    
+    private static func toRequestObject(message: AromaRequest) -> ApplicationService_SendMessageRequest {
+        
+        let request = ApplicationService_SendMessageRequest()
+        request.body = message.body
+        request.title = message.title
+        request.hostname = message.deviceName
+        request.timeOfMessage = currentTimestamp
+        request.urgency = Int32(message.urgency.toThrift())
+        
+        //We set the App Token
+        request.applicationToken = APP_TOKEN
+        
+        return request
+    }
+    
+    private static var currentTimestamp: Aroma_timestamp {
+        let now = NSDate()
+        return Aroma_timestamp(now.timeIntervalSince1970 * 1000)
+    }
 }

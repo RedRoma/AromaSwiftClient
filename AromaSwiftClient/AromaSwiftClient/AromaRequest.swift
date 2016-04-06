@@ -12,7 +12,6 @@ import SwiftExceptionCatcher
 
 public struct AromaRequest {
 
-    
     public enum Urgency: UInt32 {
         case LOW
         case MEDIUM
@@ -34,55 +33,25 @@ public struct AromaRequest {
     public var urgency: AromaRequest.Urgency = .LOW
     public var deviceName = UIDevice.currentDevice().name
     
-    //MARK: Private properties
-    private var tokenId: String = AromaClient.TOKEN_ID
-    
-    private var appToken: ApplicationService_ApplicationToken? {
-        
-        guard !tokenId.isEmpty else { return nil }
-        
-        let token = ApplicationService_ApplicationToken()
-        token.tokenId = self.tokenId
-        return token
-    }
-  
-    
-    func createRequestObject() -> ApplicationService_SendMessageRequest {
-        
-        let request = ApplicationService_SendMessageRequest()
-        request.applicationToken = self.appToken
-        request.body = self.body
-        request.title = self.title
-        request.hostname = deviceName
-        request.timeOfMessage = currentTimestamp
-        
-        return request
-    }
-    
-    private var currentTimestamp: Aroma_timestamp {
-        let now = NSDate()
-        return Aroma_timestamp(now.timeIntervalSince1970 * 1000)
-    }
-    
 }
 
 //MARK: Public APIs
 extension AromaRequest {
     
     public func withBody(body: String) -> AromaRequest {
-        return AromaRequest(title: title, body: body, urgency: urgency, deviceName: deviceName, tokenId: tokenId)
+        return AromaRequest(title: title, body: body, urgency: urgency, deviceName: deviceName)
     }
     
     public func withDeviceName(deviceName: String) -> AromaRequest {
-        return AromaRequest(title: title, body: body, urgency: urgency, deviceName: deviceName, tokenId: tokenId)
+        return AromaRequest(title: title, body: body, urgency: urgency, deviceName: deviceName)
     }
     
     public func withTitle(title: String) -> AromaRequest {
-        return AromaRequest(title: title, body: body, urgency: urgency, deviceName: deviceName, tokenId: tokenId)
+        return AromaRequest(title: title, body: body, urgency: urgency, deviceName: deviceName)
     }
     
     public func withUrgency(urgency: AromaRequest.Urgency) -> AromaRequest {
-        return AromaRequest(title: title, body: body, urgency: urgency, deviceName: deviceName, tokenId: tokenId)
+        return AromaRequest(title: title, body: body, urgency: urgency, deviceName: deviceName)
     }
     
     public func send(onDone: AromaClient.OnDone? = nil, onError: AromaClient.OnFail? = nil) {
