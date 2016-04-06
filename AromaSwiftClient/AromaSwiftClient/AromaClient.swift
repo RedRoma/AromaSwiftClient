@@ -11,38 +11,68 @@ import Foundation
 import SwiftExceptionCatcher
 
 
-class AromaClient {
+public class AromaClient {
     
-    public typealias OnDone = (Aroma_Message) -> Void
-    public typealias OnFail = (NSError) -> Void
+    public typealias OnDone = () -> Void
+    public typealias OnFail = (ErrorType) -> Void
     
-    private let async = NSOperationQueue()
-    private let main = NSOperationQueue.mainQueue()
+    //Endpoint management
+    private static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.PRODUCTION_ENDPOINT()
+    public static var hostname = DEFAULT_ENDPOINT.hostname
+    public static var port = UInt32(DEFAULT_ENDPOINT.port)
     
-    private var body: String?
-    private var title: String?
-    
-    private let device = UIDevice.currentDevice().name
-    
-    init() {
-        async.maxConcurrentOperationCount = 1
-    }
-    
-    public func send() {
-        
-        guard let title = title else { return }
-        
-        async.addOperationWithBlock() {
-        
-            do {
-                try tryOp() {
-                    
-                }
+    //Async and Threading
+    private static let async = NSOperationQueue()
+    private static let main = NSOperationQueue.mainQueue()
+    public static var maxConcurrency: Int = 1 {
+        didSet {
+            if maxConcurrency >= 1 {
+                async.maxConcurrentOperationCount = maxConcurrency
             }
-            catch let ex {
-                
-            }
-            
         }
     }
+    
+    public static var TOKEN_ID: String = ""
+    
+
+    static func createThriftClient() -> ApplicationService_ApplicationService {
+        
+        let tTransport = TSocketClient(hostname: AromaClient.hostname, port: AromaClient.port)
+        let tProtocol = TBinaryProtocol(transport: tTransport)
+        
+        return ApplicationService_ApplicationServiceClient(withProtocol: tProtocol)
+    }
+    
+    
+    public static func send(message: AromaRequest, onDone: AromaClient.OnDone? = nil, onError: AromaClient.OnFail? = nil) {
+        
+        guard !message.title.isEmpty else {
+            onDone?()
+            return
+        }
+        
+        let request = message.createRequestObject()
+        let client = createThriftClient()
+        
+        do {
+            let _ = try tryOp() { client.sendMessage(request) }
+            //Message successfully sent
+            
+            if let callback = onDone {
+                AromaClient.main.addOperationWithBlock() { callback() }
+            }
+        }
+        catch let ex {
+            
+            print("Failed to send AromaMessage \(message) : \(ex)")
+            
+            if let callback = onError {
+                AromaClient.main.addOperationWithBlock() { callback(ex) }
+            }
+        }
+        
+    }
+
+   
+    
 }
