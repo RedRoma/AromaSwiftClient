@@ -65,3 +65,6 @@ AromaClient.begin()
 
 ### Set the Urgency
 >Set an Urgency to each message. Think of Urgency like you would a Log Severity Level. Using them allows you and your team to know just how important a message is.
+
+# Project Source
+Additional info on the Swift Client can be found by visiting the [GitHub project](https://github.com/RedRoma/aroma-swift-client).
