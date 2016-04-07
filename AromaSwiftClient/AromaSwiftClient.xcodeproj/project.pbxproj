@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B036AF59BEFD33EFCD44457 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B140FB6314C840E66D2EFD /* Pods.framework */; };
 		DE1E06761CB5CFE9002D14CC /* AromaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */; };
+		DE1E06781CB611C9002D14CC /* AromaRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */; };
 		DE683D621CB37AD80072F98A /* AromaSwiftClient.h in Headers */ = {isa = PBXBuildFile; fileRef = DE683D611CB37AD80072F98A /* AromaSwiftClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE683D691CB37AD80072F98A /* AromaSwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE683D5E1CB37AD80072F98A /* AromaSwiftClient.framework */; };
 		DE683D6E1CB37AD80072F98A /* AromaSwiftClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE683D6D1CB37AD80072F98A /* AromaSwiftClientTests.swift */; };
@@ -29,6 +30,7 @@
 		90B140FB6314C840E66D2EFD /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56197EB224E719EF8AF6F09 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequest.swift; sourceTree = "<group>"; };
+		DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequestTests.swift; sourceTree = "<group>"; };
 		DE683D5E1CB37AD80072F98A /* AromaSwiftClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AromaSwiftClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE683D611CB37AD80072F98A /* AromaSwiftClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AromaSwiftClient.h; sourceTree = "<group>"; };
 		DE683D631CB37AD80072F98A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				DE683D6D1CB37AD80072F98A /* AromaSwiftClientTests.swift */,
 				DE683D6F1CB37AD80072F98A /* Info.plist */,
+				DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */,
 			);
 			path = AromaSwiftClientTests;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1E06781CB611C9002D14CC /* AromaRequestTests.swift in Sources */,
 				DE683D6E1CB37AD80072F98A /* AromaSwiftClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

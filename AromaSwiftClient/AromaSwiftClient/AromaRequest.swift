@@ -10,7 +10,7 @@ import AromaThrift
 import Foundation
 import SwiftExceptionCatcher
 
-public struct AromaRequest {
+public struct AromaRequest : Equatable {
 
     public enum Urgency: UInt32 {
         case LOW
@@ -32,6 +32,39 @@ public struct AromaRequest {
     public var body: String? = ""
     public var urgency: AromaRequest.Urgency = .LOW
     public var deviceName = UIDevice.currentDevice().name
+   
+    
+}
+
+
+public func == (lhs: AromaRequest, rhs: AromaRequest) -> Bool {
+    
+    if !equals(lhs.title, right: rhs.title) {
+        return false
+    }
+    
+    if !equals(lhs.body, right: rhs.body) {
+        return false
+    }
+    
+    if !equals(lhs.urgency, right: rhs.urgency) {
+        return false
+    }
+    
+    if !equals(lhs.deviceName, right: rhs.deviceName) {
+        return false
+    }
+    
+    return true
+}
+
+func equals<T:Equatable> (left: T?, right: T?) -> Bool {
+    
+    if let left = left, let right = right {
+        return left == right
+    }
+    
+    return left == nil && right == nil
     
 }
 
