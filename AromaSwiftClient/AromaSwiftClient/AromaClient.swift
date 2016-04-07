@@ -40,9 +40,8 @@ public class AromaClient {
         token.tokenId = TOKEN_ID
         return token
     }
-    
 
-    static func createThriftClient() -> ApplicationService_ApplicationService {
+    private static func createThriftClient() -> ApplicationService_ApplicationService {
         
         let tTransport = TSocketClient(hostname: AromaClient.hostname, port: AromaClient.port)
         let tProtocol = TBinaryProtocol(transport: tTransport)
@@ -83,7 +82,6 @@ public class AromaClient {
 }
 
 extension AromaClient {
-    
     
     private static func toRequestObject(message: AromaRequest) -> ApplicationService_SendMessageRequest {
         
