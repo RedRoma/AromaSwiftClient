@@ -8,19 +8,18 @@ Pod::Spec.new do |aroma|
   aroma.author           = { "SirWellington" => "wellington@redroma.tech" }
   aroma.source           =
   {
-       :path => "AromaSwiftClient/*"
+       :path => "AromaSwiftClient/AromaSwiftClient/"
   }
-  aroma.source_files = "*.{h,m,swift}"
+  aroma.source_files = "AromaSwiftClient/*.{h,m,swift}"
   # aroma.resources = 'Pod/Assets/*'
 
   aroma.platform     = :ios, '8.0', :osx, '10.8'
   aroma.requires_arc = false
 
-  #===============================
-  # REDROMA REPOSITORY
-  source 'https://bitbucket.org/RedRoma/red-roma-cocoa-specs.git'
-  #===============================
-  
   aroma.dependency 'Thrift', '~> 0.9.3'
   aroma.dependency 'AromaThrift', '~> 1.8'
+
+  aroma.prepare_command = <<-CMD
+     find Pods -regex '.*/*/AromaThrift/.*\\.h' -print0 | xargs -0 sed -i  '' 's_\\(.*import\\) \\"\\(T.*h.*\\)\\"_\\1 <Thrift/\\2>_'
+    CMD
 end
