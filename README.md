@@ -24,6 +24,11 @@ After adding the **RedRoma™** Repo, add the following line to your `Podfile`.
 pod 'AromaSwiftClient', '1.0'
 ```
 
+>### Latest Release
+For the latest release, use the following line instead
+```xml
+pod 'AromaSwiftClient', :git => 'https://github.com/RedRoma/aroma-swift-client.git', :branch => 'develop'
+```
 
 # API
 
