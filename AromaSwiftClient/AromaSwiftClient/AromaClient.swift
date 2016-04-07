@@ -49,6 +49,9 @@ public class AromaClient {
         return ApplicationService_ApplicationServiceClient(withProtocol: tProtocol)
     }
     
+    public static func begin() -> AromaRequest {
+        return AromaRequest()
+    }
     
     public static func send(message: AromaRequest, onDone: AromaClient.OnDone? = nil, onError: AromaClient.OnFail? = nil) {
         
