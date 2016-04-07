@@ -41,25 +41,82 @@
         <h1>
 <a id="aroma-integration-guide-for-swift" class="anchor" href="#aroma-integration-guide-for-swift" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aroma Integration Guide for Swift</h1>
 
-<p><a href="http://aroma.redroma.tech/"><img src="https://raw.githubusercontent.com/RedRoma/Aroma/develop/Graphics/Logo.png" width="300"></a></p>
+<p><a href="http://aroma.redroma.tech/"><img src="https://raw.githubusercontent.com/RedRoma/aroma/develop/Graphics/Logo.png" width="300"></a></p>
+
+<h2>
+<a id="the-official-swift-and-ios-client-to-aroma" class="anchor" href="#the-official-swift-and-ios-client-to-aroma" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Official Swift and iOS Client to Aroma</h2>
 
 <h1>
 <a id="cocoapods" class="anchor" href="#cocoapods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CocoaPods</h1>
 
+<p>Aroma provides easy integration with CocoaPods.</p>
+
 <h2>
 <a id="add-redroma-repository" class="anchor" href="#add-redroma-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add RedRoma Repository</h2>
 
+<p>In order to use Aroma, add the <strong>RedRoma™</strong> Spec repo to your <code>Podfile</code>.</p>
+
+<div class="highlight highlight-text-xml"><pre>source 'https://github.com/RedRoma/CocoaSpecs.git'</pre></div>
+
 <h2>
-<a id="add-pod" class="anchor" href="#add-pod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Pod</h2>
+<a id="add-the-pod" class="anchor" href="#add-the-pod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add the Pod</h2>
+
+<p>After adding the <strong>RedRoma™</strong> Repo, add the following line to your <code>Podfile</code>.</p>
+
+<div class="highlight highlight-text-xml"><pre>pod 'AromaSwiftClient', '1.0'</pre></div>
 
 <h1>
 <a id="api" class="anchor" href="#api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h1>
 
 <h2>
-<a id="setup-the-token" class="anchor" href="#setup-the-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup the Token</h2>
+<a id="import-the-module" class="anchor" href="#import-the-module" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Import the Module</h2>
+
+<p>Add the following import statement wherever you use the Aroma Client.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> AromaSwiftClient</pre></div>
 
 <h2>
-<a id="sending-messages" class="anchor" href="#sending-messages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sending Messages</h2>
+<a id="setup-the-token" class="anchor" href="#setup-the-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup the Token</h2>
+
+<p>Before you can send messages to Aroma, be sure to set the Application <code>Token</code> given when the App was provisioned from within the app.</p>
+
+<blockquote>
+<p>The Token should look something like this:</p>
+
+<pre><code>abcdefgh-1234-474c-ae46-1234567890ab
+</code></pre>
+</blockquote>
+
+<h2>
+<a id="send-a-message" class="anchor" href="#send-a-message" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Send a Message</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">AromaClient</span>.<span class="pl-en">begin</span>()
+    .<span class="pl-en">withTitle</span>(<span class="pl-s"><span class="pl-pds">"</span>App Launched<span class="pl-pds">"</span></span>)
+    .<span class="pl-en">withBody</span>(<span class="pl-smi">user</span>.<span class="pl-smi">email</span>)
+    .<span class="pl-en">withUrgency</span>(.<span class="pl-c1">LOW</span>)
+    .<span class="pl-c1">send</span>()</pre></div>
+
+<h1>
+<a id="best-practices" class="anchor" href="#best-practices" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Best Practices</h1>
+
+<h3>
+<a id="send-important-messages" class="anchor" href="#send-important-messages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Send Important Messages</h3>
+
+<blockquote>
+<p>Try to only Send messages that are actually interesting. You don't want to bombard Aroma with too many diagnostic messages that are better suited for Logging.</p>
+</blockquote>
+
+<h3>
+<a id="set-the-urgency" class="anchor" href="#set-the-urgency" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Set the Urgency</h3>
+
+<blockquote>
+<p>Set an Urgency to each message. Think of Urgency like you would a Log Severity Level. Using them allows you and your team to know just how important a message is.</p>
+</blockquote>
+
+<h1>
+<a id="project-source" class="anchor" href="#project-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Source</h1>
+
+<p>Additional info on the Swift Client can be found by visiting the <a href="https://github.com/RedRoma/aroma-swift-client">GitHub project</a>.</p>
       </section>
 
     </div>
