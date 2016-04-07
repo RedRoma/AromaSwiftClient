@@ -20,9 +20,9 @@ Pod::Spec.new do |aroma|
   aroma.dependency 'AromaThrift', '1.9'
   aroma.dependency 'SwiftExceptionCatcher', '1.0'
 
-  aroma.prepare_command = <<-CMD
-
-        find Pods -regex '.*/*/AromaThrift/.*\\.h' -print0 | xargs -0 sed -i  '' 's_.*import.*\\"TProtocol.h\\"_@import ThriftLib;_'
-        find Pods -regex '.*/*/AromaThrift/.*\\.h' -print0 | xargs -0 sed -i  '' 's_.*import.*T.h\\"__'
-    CMD
+  # aroma.prepare_command = <<-CMD
+  #
+  #       find Pods -regex '.*/*/AromaThrift/.*\\.h' -print0 | xargs -0 sed -i  '' 's_.*import.*\\"TProtocol.h\\"_@import ThriftLib;_'
+  #       find Pods -regex '.*/*/AromaThrift/.*\\.h' -print0 | xargs -0 sed -i  '' 's_.*import.*T.h\\"__'
+  #   CMD
 end
