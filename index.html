@@ -100,8 +100,8 @@
 <a id="send-a-message" class="anchor" href="#send-a-message" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Send a Message</h2>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-smi">AromaClient</span>.<span class="pl-en">begin</span>()
-    .<span class="pl-en">withTitle</span>(<span class="pl-s"><span class="pl-pds">"</span>App Launched<span class="pl-pds">"</span></span>)
-    .<span class="pl-en">withBody</span>(<span class="pl-smi">user</span>.<span class="pl-smi">email</span>)
+    .<span class="pl-en">withTitle</span>(<span class="pl-s"><span class="pl-pds">"</span>Operation Failed<span class="pl-pds">"</span></span>)
+    .<span class="pl-en">withBody</span>(<span class="pl-s"><span class="pl-pds">"</span>Details: <span class="pl-cce">\(</span>error)<span class="pl-pds">"</span></span>)
     .<span class="pl-en">withUrgency</span>(.<span class="pl-c1">LOW</span>)
     .<span class="pl-c1">send</span>()</pre></div>
 
