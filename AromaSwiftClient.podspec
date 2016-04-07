@@ -15,10 +15,11 @@ Pod::Spec.new do |aroma|
 
   aroma.platform     = :ios, '8.0', :osx, '10.8'
   aroma.requires_arc = false
-  
-  aroma.dependency 'AromaThrift', '~> 1.8'
+
+  aroma.dependency 'AromaThrift', '1.9'
+  aroma.dependency 'SwiftExceptionCatcher', '~> 1.0'
 
   aroma.prepare_command = <<-CMD
-     find . -regex '.*.h' -print0 | xargs -0 sed -i  '' 's_\\(.*import\\) \\"\\(T.*h.*\\)\\"_\\1 <Thrift/\\2>_'
+        find AromaThrift -regex '.*.h' -print0 | xargs -0 sed -i  '' 's_\\(.*import\\) \\"\\(T.*h.*\\)\\"_\\1 <ThriftLib/\\2>_'
     CMD
 end
