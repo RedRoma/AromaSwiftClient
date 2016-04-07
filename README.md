@@ -52,8 +52,8 @@ abcdefgh-1234-474c-ae46-1234567890ab
 
 ```js
 AromaClient.begin()
-    .withTitle("App Launched")
-    .withBody(user.email)
+    .withTitle("Operation Failed")
+    .withBody("Details: \(error)")
     .withUrgency(.LOW)
     .send()
 ```
