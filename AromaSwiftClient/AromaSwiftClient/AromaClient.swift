@@ -41,7 +41,7 @@ public class AromaClient {
         return token
     }
 
-    private static func createThriftClient() -> ApplicationService_ApplicationService {
+     static func createThriftClient() -> ApplicationService_ApplicationService {
         
         let tTransport = TSocketClient(hostname: AromaClient.hostname, port: AromaClient.port)
         let tProtocol = TBinaryProtocol(transport: tTransport)
