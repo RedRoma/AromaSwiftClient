@@ -1,6 +1,6 @@
 {
   "name": "Aroma Swift Client",
   "tagline": "The Official Swift and iOS Client to Aroma",
-  "body": "Aroma Integration Guide for Swift\r\n==============================================\r\n\r\n[<img src=\"https://raw.githubusercontent.com/RedRoma/Aroma/develop/Graphics/Logo.png\" width=\"300\">](https://github.com/RedRoma/Aroma)\r\n\r\n# Coming Soon...",
+  "body": "Aroma Integration Guide for Swift\r\n==============================================\r\n\r\n[<img src=\"https://raw.githubusercontent.com/RedRoma/Aroma/develop/Graphics/Logo.png\" width=\"300\">](http://aroma.redroma.tech/)\r\n\r\n# CocoaPods\r\n\r\n## Add RedRoma Repository\r\n\r\n## Add Pod\r\n\r\n# API\r\n\r\n## Setup the Token\r\n\r\n## Sending Messages\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
