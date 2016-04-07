@@ -32,7 +32,6 @@ public struct AromaRequest : Equatable {
     public var body: String? = ""
     public var urgency: AromaRequest.Urgency = .LOW
     public var deviceName = UIDevice.currentDevice().name
-   
     
 }
 
