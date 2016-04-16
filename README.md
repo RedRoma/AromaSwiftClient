@@ -48,13 +48,20 @@ Before you can send messages to Aroma, be sure to set the Application `Token` gi
 abcdefgh-1234-474c-ae46-1234567890ab
 ```
 
+Put this in your `AppDelegate` when the Application Loads.
+
+```js
+AromaClient.TOKEN_ID = "abcdefgh-1234-474c-ae46-1234567890ab"
+```
+
 ## Send a Message
 
 ```js
-AromaClient.begin()
-    .withTitle("Operation Failed")
-    .withBody("Details: \(error)")
-    .withUrgency(.LOW)
+AromaClient.beginWithTitle("Operation Failed")
+    .addBody("Details: \(error)")
+    .addLine(2)
+    .addBody("For User \(user)")
+    .withPriority(.LOW)
     .send()
 ```
 
