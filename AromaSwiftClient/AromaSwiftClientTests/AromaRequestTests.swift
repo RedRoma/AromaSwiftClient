@@ -78,10 +78,10 @@ class AromaRequestTests: XCTestCase {
         
         let first = "jkflkasj3filjfleas"
         let second = "seifj3lj90fjsdl fjo3 jrdlfj"
-        let expected = "\(first)\n\(second)"
+        let expected = "\(first)\n\n\(second)"
         
         let result = instance.addBody(first)
-            .addLine()
+            .addLine(2)
             .addBody(second)
         
         XCTAssert(result.body == expected)

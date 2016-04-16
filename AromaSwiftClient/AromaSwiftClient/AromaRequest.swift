@@ -75,8 +75,13 @@ extension AromaRequest {
         return AromaRequest(title: title, body: newBody, priority: priority, deviceName: deviceName)
     }
 
-    public func addLine() -> AromaRequest {
-        let newBody = (self.body ?? "") + "\n"
+    public func addLine(number: Int = 1) -> AromaRequest {
+        
+        guard number > 0 else { return self }
+        
+        let newLineCharacter = Character("\n")
+        let newBody = (self.body ?? "") + String(count: number, repeatedValue: newLineCharacter)
+        
         return AromaRequest(title: title, body: newBody, priority: priority, deviceName: deviceName)
     }
 
