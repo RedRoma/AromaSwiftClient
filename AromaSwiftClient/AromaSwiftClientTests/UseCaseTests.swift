@@ -11,7 +11,7 @@ import AromaSwiftClient
 
 class UseCaseTests: XCTestCase {
 
-    private let tokenId = "6c2a0886-6a96-40c7-99f2-711fb8bdebf0"
+    private let tokenId = TEST_TOKEN_ID
 
     private let title = "Unit Test Ran"
 
@@ -26,10 +26,11 @@ class UseCaseTests: XCTestCase {
 
         print("Sending Message")
 
-        let onError: AromaClient.OnFail = { ex in
+        let onError: AromaClient.OnError = { ex in
             print("Failed to send Message: \(ex)")
             XCTFail("Could not send message: \(ex)")
         }
+        
         let onDone: AromaClient.OnDone = {
             print("Successfully sent message")
         }

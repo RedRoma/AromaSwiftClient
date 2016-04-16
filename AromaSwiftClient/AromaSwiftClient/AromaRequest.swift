@@ -92,7 +92,7 @@ extension AromaRequest {
         return AromaRequest(title: title, body: body, priority: priority, deviceName: deviceName)
     }
 
-    public func send(onDone: AromaClient.OnDone? = nil, onError: AromaClient.OnFail? = nil) {
+    public func send(onDone: AromaClient.OnDone? = nil, onError: AromaClient.OnError? = nil) {
         AromaClient.send(self, onDone: onDone, onError: onError)
     }
 }

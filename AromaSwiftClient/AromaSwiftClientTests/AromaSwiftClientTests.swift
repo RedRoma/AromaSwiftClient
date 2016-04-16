@@ -9,24 +9,36 @@
 import XCTest
 @testable import AromaSwiftClient
 
-class AromaSwiftClientTests: XCTestCase {
+let TEST_TOKEN_ID = "6c2a0886-6a96-40c7-99f2-711fb8bdebf0"
 
+class AromaSwiftClientTests: XCTestCase {
+    
     private var message: AromaRequest!
+    
+    private dynamic var isDone = false
+   
 
     override func setUp() {
         super.setUp()
+        
         message = AromaRequest()
         message.title = "some title"
         message.body = "some body"
         message.priority = .LOW
+        
+        isDone = false
+        
+        testDefaultValues()
+        AromaClient.TOKEN_ID = TEST_TOKEN_ID
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        
+        AromaClient.TOKEN_ID = ""
     }
 
-    func testDefaultValues() {
+    private func testDefaultValues() {
         XCTAssertNotNil(AromaClient.hostname)
         XCTAssertNotNil(AromaClient.port)
         XCTAssert(AromaClient.port > 0)
@@ -41,16 +53,44 @@ class AromaSwiftClientTests: XCTestCase {
 
     func testMessageSend() {
 
-        let onDone: AromaClient.OnDone = {
-            print("Message sent!")
-        }
+        AromaClient.send(message, onError: onError, onDone: onDone)
 
-        AromaClient.send(message, onDone: onDone)
+        while !isDone { }
     }
 
     func testBeginWithTitle() {
         let result = AromaClient.beginWithTitle(message.title)
         XCTAssertNotNil(result)
     }
-
+    
+    func testSendHighPriorityMessage() {
+        
+        AromaClient.sendHighPriorityMessage(withTitle: "High Priority Test", withBody: message.body, onError: onError, onDone: onDone)
+        
+        while !isDone { }
+    }
+    
+    func testSendMediumPriorityMessage() {
+        
+        AromaClient.sendMediumPriorityMessage(withTitle: "Medium Priority Test", onError: onError, onDone: onDone)
+        
+        while !isDone { }
+    }
+    
+    func testSendLowPriorityMessage() {
+        
+        AromaClient.sendLowPriorityMessage(withTitle: "Low Priority Test", onError: onError, onDone: onDone)
+        
+        while !isDone { }
+    }
+    
+    private func onError(ex: ErrorType) {
+        XCTFail("Failed to send message: \(ex)")
+    }
+    
+    private func onDone() {
+        print("Message sent!")
+        
+        self.isDone = true
+    }
 }

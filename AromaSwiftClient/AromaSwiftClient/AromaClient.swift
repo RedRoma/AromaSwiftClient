@@ -14,7 +14,7 @@ import SwiftExceptionCatcher
 public class AromaClient {
 
     public typealias OnDone = () -> Void
-    public typealias OnFail = (ErrorType) -> Void
+    public typealias OnError = (ErrorType) -> Void
 
     //Endpoint management
     private static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.PRODUCTION_ENDPOINT()
@@ -57,33 +57,53 @@ extension AromaClient {
         return AromaRequest().withTitle(title)
     }
 
-    public static func send(message: AromaRequest, onDone: AromaClient.OnDone? = nil, onError: AromaClient.OnFail? = nil) {
+    public static func send(message: AromaRequest, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
 
         guard !message.title.isEmpty else {
             onDone?()
             return
         }
 
-        let request = toRequestObject(message)
-        let client = createThriftClient()
+        self.async.addOperationWithBlock() {
 
-        do {
-            let _ = try tryOp() { client.sendMessage(request) }
-            //Message successfully sent
-
-            if let callback = onDone {
-                AromaClient.main.addOperationWithBlock() { callback() }
+            defer {
+                if let callback = onDone {
+                    callback()
+                }
             }
-        }
-        catch let ex {
 
-            print("Failed to send AromaMessage \(message) : \(ex)")
+            let request = self.toRequestObject(message)
+            let client = self.createThriftClient()
 
-            if let callback = onError {
-                AromaClient.main.addOperationWithBlock() { callback(ex) }
+            do {
+                let _ = try tryOp() { client.sendMessage(request) }
+                //Message successfully sent
             }
-        }
+            catch let ex {
+                print("Failed to send AromaMessage \(message) : \(ex)")
 
+                if let callback = onError {
+//                    AromaClient.main.addOperationWithBlock() { callback(ex) }
+                    callback(ex)
+                }
+            }
+
+        }
+    }
+
+    public static func sendHighPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
+        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.HIGH)
+        send(request, onError: onError, onDone: onDone)
+    }
+
+    public static func sendMediumPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
+        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.MEDIUM)
+        send(request, onError: onError, onDone: onDone)
+    }
+
+    public static func sendLowPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
+        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.LOW)
+        send(request, onError: onError, onDone: onDone)
     }
 
 }
