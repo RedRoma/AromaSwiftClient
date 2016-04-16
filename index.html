@@ -96,13 +96,18 @@
 </code></pre>
 </blockquote>
 
+<p>Put this in your <code>AppDelegate</code> when the Application Loads.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">AromaClient</span>.<span class="pl-c1">TOKEN_ID</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>abcdefgh-1234-474c-ae46-1234567890ab<span class="pl-pds">"</span></span></pre></div>
+
 <h2>
 <a id="send-a-message" class="anchor" href="#send-a-message" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Send a Message</h2>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">AromaClient</span>.<span class="pl-en">begin</span>()
-    .<span class="pl-en">withTitle</span>(<span class="pl-s"><span class="pl-pds">"</span>Operation Failed<span class="pl-pds">"</span></span>)
-    .<span class="pl-en">withBody</span>(<span class="pl-s"><span class="pl-pds">"</span>Details: <span class="pl-cce">\(</span>error)<span class="pl-pds">"</span></span>)
-    .<span class="pl-en">withUrgency</span>(.<span class="pl-c1">LOW</span>)
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">AromaClient</span>.<span class="pl-en">beginWithTitle</span>(<span class="pl-s"><span class="pl-pds">"</span>Operation Failed<span class="pl-pds">"</span></span>)
+    .<span class="pl-en">addBody</span>(<span class="pl-s"><span class="pl-pds">"</span>Details: <span class="pl-cce">\(</span>error)<span class="pl-pds">"</span></span>)
+    .<span class="pl-en">addLine</span>(<span class="pl-c1">2</span>)
+    .<span class="pl-en">addBody</span>(<span class="pl-s"><span class="pl-pds">"</span>For User <span class="pl-cce">\(</span>user)<span class="pl-pds">"</span></span>)
+    .<span class="pl-en">withPriority</span>(.<span class="pl-c1">LOW</span>)
     .<span class="pl-c1">send</span>()</pre></div>
 
 <h1>
