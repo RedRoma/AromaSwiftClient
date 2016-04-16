@@ -12,15 +12,15 @@ import SwiftExceptionCatcher
 
 
 public class AromaClient {
-    
+
     public typealias OnDone = () -> Void
     public typealias OnFail = (ErrorType) -> Void
-    
+
     //Endpoint management
     private static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.PRODUCTION_ENDPOINT()
     public static var hostname = DEFAULT_ENDPOINT.hostname
     public static var port = UInt32(DEFAULT_ENDPOINT.port)
-    
+
     //Async and Threading
     private static let async = NSOperationQueue()
     private static let main = NSOperationQueue.mainQueue()
@@ -31,76 +31,76 @@ public class AromaClient {
             }
         }
     }
-    
+
     public static var TOKEN_ID: String = ""
     private static var APP_TOKEN: ApplicationService_ApplicationToken? {
         guard !TOKEN_ID.isEmpty else { return nil }
-        
+
         let token = ApplicationService_ApplicationToken()
         token.tokenId = TOKEN_ID
         return token
     }
 
      static func createThriftClient() -> ApplicationService_ApplicationService {
-        
+
         let tTransport = TSocketClient(hostname: AromaClient.hostname, port: AromaClient.port)
         let tProtocol = TBinaryProtocol(transport: tTransport)
-        
+
         return ApplicationService_ApplicationServiceClient(withProtocol: tProtocol)
     }
-    
-    public static func begin() -> AromaRequest {
-        return AromaRequest()
+
+    public static func beginwithTitle(title: String) -> AromaRequest {
+        return AromaRequest().withTitle(title)
     }
-    
+
     public static func send(message: AromaRequest, onDone: AromaClient.OnDone? = nil, onError: AromaClient.OnFail? = nil) {
-        
+
         guard !message.title.isEmpty else {
             onDone?()
             return
         }
-        
+
         let request = toRequestObject(message)
         let client = createThriftClient()
-        
+
         do {
             let _ = try tryOp() { client.sendMessage(request) }
             //Message successfully sent
-            
+
             if let callback = onDone {
                 AromaClient.main.addOperationWithBlock() { callback() }
             }
         }
         catch let ex {
-            
+
             print("Failed to send AromaMessage \(message) : \(ex)")
-            
+
             if let callback = onError {
                 AromaClient.main.addOperationWithBlock() { callback(ex) }
             }
         }
-        
+
     }
 
 }
 
 extension AromaClient {
-    
+
     private static func toRequestObject(message: AromaRequest) -> ApplicationService_SendMessageRequest {
-        
+
         let request = ApplicationService_SendMessageRequest()
         request.body = message.body
         request.title = message.title
         request.hostname = message.deviceName
         request.timeOfMessage = currentTimestamp
-        request.urgency = Int32(message.urgency.toThrift())
-        
+        request.urgency = Int32(message.priority.toThrift())
+
         //We set the App Token
         request.applicationToken = APP_TOKEN
-        
+
         return request
     }
-    
+
     private static var currentTimestamp: Aroma_timestamp {
         let now = NSDate()
         return Aroma_timestamp(now.timeIntervalSince1970 * 1000)

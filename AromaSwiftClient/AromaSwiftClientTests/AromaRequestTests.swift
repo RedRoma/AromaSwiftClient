@@ -10,67 +10,101 @@ import XCTest
 @testable import AromaSwiftClient
 
 class AromaRequestTests: XCTestCase {
-    
+
     private var instance: AromaRequest!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         instance = AromaRequest()
-        
+
         instance.title = "message title"
         instance.body = "some body"
-        instance.urgency = .LOW
+        instance.priority = .LOW
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
     
+    private func clearBody() {
+        instance.body = nil
+    }
+
     func testWithTitle() {
         guard let instance = instance else { return }
-        
+
         let newTitle = "new title"
         let result = instance.withTitle(newTitle)
-        
+
         XCTAssert(result.title == newTitle)
         XCTAssert(result.body == instance.body)
-        XCTAssert(result.urgency == instance.urgency)
+        XCTAssert(result.priority == instance.priority)
         XCTAssert(result.deviceName == instance.deviceName)
         XCTAssert(result != instance)
-    
+
     }
-   
-    func testWithBody() {
+
+    func testAddBody() {
+        clearBody()
         
         let newBody = "new Body"
-        let result = instance.withBody(newBody)
-        
+        let result = instance.addBody(newBody)
+
         XCTAssert(result.body == newBody)
         XCTAssert(result.title == instance.title)
         XCTAssert(result.deviceName == instance.deviceName)
-        XCTAssert(result.urgency == instance.urgency)
+        XCTAssert(result.priority == instance.priority)
         XCTAssert(result != instance)
     }
-    
-    func testWithDeviceName() {
+
+    func testMultipleAddBody() {
+        clearBody()
         
+        let first = "first body"
+        let second = "second body"
+        
+        let result = instance.addBody(first)
+                             .addBody(second)
+
+        XCTAssert(result.body == first + second)
+        XCTAssert(result.title == instance.title)
+        XCTAssert(result.deviceName == instance.deviceName)
+        XCTAssert(result.priority == instance.priority)
+    }
+    
+    func testAddBodyWithLine() {
+        clearBody()
+        
+        let first = "jkflkasj3filjfleas"
+        let second = "seifj3lj90fjsdl fjo3 jrdlfj"
+        let expected = "\(first)\n\(second)"
+        
+        let result = instance.addBody(first)
+            .addLine()
+            .addBody(second)
+        
+        XCTAssert(result.body == expected)
+    }
+
+    func testWithDeviceName() {
+
         let newDevice = "new Device"
         let result = instance.withDeviceName(newDevice)
-        
+
         XCTAssert(result.deviceName == newDevice)
         XCTAssert(result.body == instance.body)
         XCTAssert(result.title == instance.title)
-        XCTAssert(result.urgency == instance.urgency)
+        XCTAssert(result.priority == instance.priority)
         XCTAssert(result != instance)
     }
-    
+
     func testWithUrgency() {
-        
-        let newUrgecy: AromaRequest.Urgency = .HIGH
-        let result = instance.withUrgency(newUrgecy)
-        
-        XCTAssert(result.urgency == newUrgecy)
+
+        let newUrgecy: AromaRequest.Priority = .HIGH
+        let result = instance.withPriority(newUrgecy)
+
+        XCTAssert(result.priority == newUrgecy)
         XCTAssert(result.title == instance.title)
         XCTAssert(result.body == instance.body)
         XCTAssert(result.deviceName == instance.deviceName)
