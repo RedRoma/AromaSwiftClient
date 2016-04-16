@@ -42,7 +42,7 @@ class UseCaseTests: XCTestCase {
             .addLine().addLine()
             .addBody("Todays Date is \(date)")
             .withPriority(.LOW)
-            .send(onDone, onError: onError)
+            .send(onError, onDone: onDone)
 
     }
 
