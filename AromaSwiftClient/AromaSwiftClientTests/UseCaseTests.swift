@@ -36,7 +36,7 @@ class UseCaseTests: XCTestCase {
 
         let date = NSDate()
 
-        AromaClient.beginwithTitle(title)
+        AromaClient.beginWithTitle(title)
             .addBody("Sending a test message as part of the unit test")
             .addLine().addLine()
             .addBody("Todays Date is \(date)")

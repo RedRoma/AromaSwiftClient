@@ -48,8 +48,12 @@ public class AromaClient {
 
         return ApplicationService_ApplicationServiceClient(withProtocol: tProtocol)
     }
+}
 
-    public static func beginwithTitle(title: String) -> AromaRequest {
+//MARK : API
+extension AromaClient {
+
+    public static func beginWithTitle(title: String) -> AromaRequest {
         return AromaRequest().withTitle(title)
     }
 
