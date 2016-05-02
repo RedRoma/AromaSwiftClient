@@ -10,18 +10,22 @@ import AromaThrift
 import Foundation
 import SwiftExceptionCatcher
 
-public struct AromaRequest : Equatable {
+public struct AromaRequest : Equatable
+{
 
-    public enum Priority: UInt32 {
+    public enum Priority: UInt32
+    {
         case LOW
         case MEDIUM
         case HIGH
 
-        func toThrift() -> UInt32 {
-            switch self {
-            case .LOW : return Urgency_LOW.rawValue
-            case .MEDIUM : return Urgency_MEDIUM.rawValue
-            case .HIGH : return Urgency_HIGH.rawValue
+        func toThrift() -> UInt32
+        {
+            switch self
+            {
+                case .LOW : return Urgency_LOW.rawValue
+                case .MEDIUM : return Urgency_MEDIUM.rawValue
+                case .HIGH : return Urgency_HIGH.rawValue
             }
         }
     }
@@ -31,35 +35,42 @@ public struct AromaRequest : Equatable {
     public var title: String = ""
     public var body: String? = ""
     public var priority: AromaRequest.Priority = .LOW
-    public var deviceName = UIDevice.currentDevice().name
+    public var deviceName: String = UIDevice.currentDevice().identifierForVendor?.UUIDString ?? UIDevice.currentDevice().name
 
 }
 
 
-public func == (lhs: AromaRequest, rhs: AromaRequest) -> Bool {
+public func == (lhs: AromaRequest, rhs: AromaRequest) -> Bool
+{
 
-    if !equals(lhs.title, right: rhs.title) {
+    if !equals(lhs.title, right: rhs.title)
+    {
         return false
     }
 
-    if !equals(lhs.body, right: rhs.body) {
+    if !equals(lhs.body, right: rhs.body)
+    {
         return false
     }
 
-    if !equals(lhs.priority, right: rhs.priority) {
+    if !equals(lhs.priority, right: rhs.priority)
+    {
         return false
     }
 
-    if !equals(lhs.deviceName, right: rhs.deviceName) {
+    if !equals(lhs.deviceName, right: rhs.deviceName)
+    {
         return false
     }
 
     return true
 }
 
-func equals<T:Equatable> (left: T?, right: T?) -> Bool {
+func equals<T:Equatable> (left: T?, right: T?) -> Bool
+{
 
-    if let left = left, let right = right {
+    if let left = left, let right = right
+    {
         return left == right
     }
 
@@ -68,14 +79,17 @@ func equals<T:Equatable> (left: T?, right: T?) -> Bool {
 }
 
 //MARK: Public APIs
-extension AromaRequest {
+extension AromaRequest
+{
 
-    public func addBody(body: String) -> AromaRequest {
+    public func addBody(body: String) -> AromaRequest
+    {
         let newBody = (self.body ?? "") + body
         return AromaRequest(title: title, body: newBody, priority: priority, deviceName: deviceName)
     }
 
-    public func addLine(number: Int = 1) -> AromaRequest {
+    public func addLine(number: Int = 1) -> AromaRequest
+    {
         
         guard number > 0 else { return self }
         
@@ -85,19 +99,23 @@ extension AromaRequest {
         return AromaRequest(title: title, body: newBody, priority: priority, deviceName: deviceName)
     }
 
-    public func withDeviceName(deviceName: String) -> AromaRequest {
+    public func withDeviceName(deviceName: String) -> AromaRequest
+    {
         return AromaRequest(title: title, body: body, priority: priority, deviceName: deviceName)
     }
 
-    public func withTitle(title: String) -> AromaRequest {
+    public func withTitle(title: String) -> AromaRequest
+    {
         return AromaRequest(title: title, body: body, priority: priority, deviceName: deviceName)
     }
 
-    public func withPriority(priority: AromaRequest.Priority) -> AromaRequest {
+    public func withPriority(priority: AromaRequest.Priority) -> AromaRequest
+    {
         return AromaRequest(title: title, body: body, priority: priority, deviceName: deviceName)
     }
 
-    public func send(onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
+    public func send(onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
+    {
         AromaClient.send(self, onError: onError, onDone: onDone)
     }
 }

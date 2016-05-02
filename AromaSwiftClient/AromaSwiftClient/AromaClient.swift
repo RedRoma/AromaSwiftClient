@@ -11,7 +11,8 @@ import Foundation
 import SwiftExceptionCatcher
 
 
-public class AromaClient {
+public class AromaClient
+{
 
     public typealias OnDone = () -> Void
     public typealias OnError = (ErrorType) -> Void
@@ -25,15 +26,18 @@ public class AromaClient {
     private static let async = NSOperationQueue()
     private static let main = NSOperationQueue.mainQueue()
     public static var maxConcurrency: Int = 1 {
-        didSet {
-            if maxConcurrency >= 1 {
+        didSet
+        {
+            if maxConcurrency >= 1
+            {
                 async.maxConcurrentOperationCount = maxConcurrency
             }
         }
     }
 
     public static var TOKEN_ID: String = ""
-    private static var APP_TOKEN: ApplicationService_ApplicationToken? {
+    private static var APP_TOKEN: ApplicationService_ApplicationToken?
+    {
         guard !TOKEN_ID.isEmpty else { return nil }
 
         let token = ApplicationService_ApplicationToken()
@@ -41,7 +45,8 @@ public class AromaClient {
         return token
     }
 
-     static func createThriftClient() -> ApplicationService_ApplicationService {
+     static func createThriftClient() -> ApplicationService_ApplicationService
+     {
 
         let tTransport = TSocketClient(hostname: AromaClient.hostname, port: AromaClient.port)
         let tProtocol = TBinaryProtocol(transport: tTransport)
@@ -53,21 +58,27 @@ public class AromaClient {
 //MARK : API
 extension AromaClient {
 
-    public static func beginWithTitle(title: String) -> AromaRequest {
+    public static func beginWithTitle(title: String) -> AromaRequest
+    {
         return AromaRequest().withTitle(title)
     }
 
-    public static func send(message: AromaRequest, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
+    public static func send(message: AromaRequest, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
+    {
 
-        guard !message.title.isEmpty else {
+        guard !message.title.isEmpty else
+        {
             onDone?()
             return
         }
 
-        self.async.addOperationWithBlock() {
+        self.async.addOperationWithBlock()
+        {
 
-            defer {
-                if let callback = onDone {
+            defer
+            {
+                if let callback = onDone
+                {
                     callback()
                 }
             }
@@ -75,14 +86,17 @@ extension AromaClient {
             let request = self.toRequestObject(message)
             let client = self.createThriftClient()
 
-            do {
+            do
+            {
                 let _ = try tryOp() { client.sendMessage(request) }
                 //Message successfully sent
             }
-            catch let ex {
+            catch let ex
+            {
                 print("Failed to send AromaMessage \(message) : \(ex)")
 
-                if let callback = onError {
+                if let callback = onError
+                {
 //                    AromaClient.main.addOperationWithBlock() { callback(ex) }
                     callback(ex)
                 }
@@ -91,26 +105,31 @@ extension AromaClient {
         }
     }
 
-    public static func sendHighPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
+    public static func sendHighPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
+    {
         let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.HIGH)
         send(request, onError: onError, onDone: onDone)
     }
 
-    public static func sendMediumPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
+    public static func sendMediumPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
+    {
         let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.MEDIUM)
         send(request, onError: onError, onDone: onDone)
     }
 
-    public static func sendLowPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil) {
+    public static func sendLowPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
+    {
         let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.LOW)
         send(request, onError: onError, onDone: onDone)
     }
 
 }
 
-extension AromaClient {
+extension AromaClient
+{
 
-    private static func toRequestObject(message: AromaRequest) -> ApplicationService_SendMessageRequest {
+    private static func toRequestObject(message: AromaRequest) -> ApplicationService_SendMessageRequest
+    {
 
         let request = ApplicationService_SendMessageRequest()
         request.body = message.body
@@ -125,7 +144,8 @@ extension AromaClient {
         return request
     }
 
-    private static var currentTimestamp: Aroma_timestamp {
+    private static var currentTimestamp: Aroma_timestamp
+    {
         let now = NSDate()
         return Aroma_timestamp(now.timeIntervalSince1970 * 1000)
     }

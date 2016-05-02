@@ -9,29 +9,34 @@
 import XCTest
 import AromaSwiftClient
 
-class UseCaseTests: XCTestCase {
+class UseCaseTests: XCTestCase
+{
 
     private let tokenId = TEST_TOKEN_ID
 
     private let title = "Unit Test Ran"
 
-    override func setUp() {
+    override func setUp()
+    {
         super.setUp()
 
         AromaClient.TOKEN_ID = tokenId
         AromaClient.maxConcurrency = 1
     }
 
-    func testAroma() {
+    func testAroma()
+    {
 
         print("Sending Message")
 
-        let onError: AromaClient.OnError = { ex in
+        let onError: AromaClient.OnError =
+        { ex in
             print("Failed to send Message: \(ex)")
             XCTFail("Could not send message: \(ex)")
         }
         
-        let onDone: AromaClient.OnDone = {
+        let onDone: AromaClient.OnDone =
+        {
             print("Successfully sent message")
         }
 

@@ -9,11 +9,13 @@
 import XCTest
 @testable import AromaSwiftClient
 
-class AromaRequestTests: XCTestCase {
+class AromaRequestTests: XCTestCase
+{
 
     private var instance: AromaRequest!
 
-    override func setUp() {
+    override func setUp()
+    {
         super.setUp()
 
         instance = AromaRequest()
@@ -23,15 +25,18 @@ class AromaRequestTests: XCTestCase {
         instance.priority = .LOW
     }
 
-    override func tearDown() {
+    override func tearDown()
+    {
         super.tearDown()
     }
     
-    private func clearBody() {
+    private func clearBody()
+    {
         instance.body = nil
     }
 
-    func testWithTitle() {
+    func testWithTitle()
+    {
         guard let instance = instance else { return }
 
         let newTitle = "new title"
@@ -45,7 +50,8 @@ class AromaRequestTests: XCTestCase {
 
     }
 
-    func testAddBody() {
+    func testAddBody()
+    {
         clearBody()
         
         let newBody = "new Body"
@@ -58,7 +64,8 @@ class AromaRequestTests: XCTestCase {
         XCTAssert(result != instance)
     }
 
-    func testMultipleAddBody() {
+    func testMultipleAddBody()
+    {
         clearBody()
         
         let first = "first body"
@@ -73,7 +80,8 @@ class AromaRequestTests: XCTestCase {
         XCTAssert(result.priority == instance.priority)
     }
     
-    func testAddBodyWithLine() {
+    func testAddBodyWithLine()
+    {
         clearBody()
         
         let first = "jkflkasj3filjfleas"
@@ -87,7 +95,8 @@ class AromaRequestTests: XCTestCase {
         XCTAssert(result.body == expected)
     }
 
-    func testWithDeviceName() {
+    func testWithDeviceName()
+    {
 
         let newDevice = "new Device"
         let result = instance.withDeviceName(newDevice)
@@ -99,7 +108,8 @@ class AromaRequestTests: XCTestCase {
         XCTAssert(result != instance)
     }
 
-    func testWithUrgency() {
+    func testWithUrgency()
+    {
 
         let newUrgecy: AromaRequest.Priority = .HIGH
         let result = instance.withPriority(newUrgecy)
