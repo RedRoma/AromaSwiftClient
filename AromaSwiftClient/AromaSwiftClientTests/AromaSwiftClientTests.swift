@@ -43,9 +43,9 @@ class AromaSwiftClientTests: XCTestCase
 
     private func testDefaultValues()
     {
-        XCTAssertNotNil(AromaClient.HOSTNAME)
-        XCTAssertNotNil(AromaClient.PORT)
-        XCTAssert(AromaClient.PORT > 0)
+        XCTAssertNotNil(AromaClient.hostname)
+        XCTAssertNotNil(AromaClient.port)
+        XCTAssert(AromaClient.port > 0)
 
         XCTAssert(AromaClient.TOKEN_ID.isEmpty)
     }

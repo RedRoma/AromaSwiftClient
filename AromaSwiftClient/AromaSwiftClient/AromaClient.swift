@@ -19,12 +19,13 @@ public class AromaClient
 
     //Endpoint management
     private static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.PRODUCTION_ENDPOINT()
-    public static var HOSTNAME = DEFAULT_ENDPOINT.hostname
-    public static var PORT = UInt32(DEFAULT_ENDPOINT.port)
+  
+    public static var hostname = DEFAULT_ENDPOINT.hostname
+    public static var port = UInt32(DEFAULT_ENDPOINT.port)
     
     
     //Defaults
-    public static var DEVICE_NAME: String = UIDevice.currentDevice().name
+    public static var deviceName: String = UIDevice.currentDevice().name
 
     //Async and Threading
     private static let async = NSOperationQueue()
@@ -53,7 +54,7 @@ public class AromaClient
      static func createThriftClient() -> ApplicationService_ApplicationService
      {
 
-        let tTransport = TSocketClient(hostname: AromaClient.HOSTNAME, port: AromaClient.PORT)
+        let tTransport = TSocketClient(hostname: AromaClient.hostname, port: AromaClient.port)
         let tProtocol = TBinaryProtocol(transport: tTransport)
 
         return ApplicationService_ApplicationServiceClient(withProtocol: tProtocol)
