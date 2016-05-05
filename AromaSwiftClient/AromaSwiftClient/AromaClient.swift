@@ -21,6 +21,10 @@ public class AromaClient
     private static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.PRODUCTION_ENDPOINT()
     public static var hostname = DEFAULT_ENDPOINT.hostname
     public static var port = UInt32(DEFAULT_ENDPOINT.port)
+    
+    
+    //Defaults
+    public static var deviceName: String = UIDevice.currentDevice().name
 
     //Async and Threading
     private static let async = NSOperationQueue()
@@ -35,6 +39,7 @@ public class AromaClient
         }
     }
 
+    //Token Management
     public static var TOKEN_ID: String = ""
     private static var APP_TOKEN: ApplicationService_ApplicationToken?
     {

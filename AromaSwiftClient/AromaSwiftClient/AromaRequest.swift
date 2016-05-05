@@ -35,7 +35,7 @@ public struct AromaRequest : Equatable
     public var title: String = ""
     public var body: String? = ""
     public var priority: AromaRequest.Priority = .LOW
-    public var deviceName: String = UIDevice.currentDevice().identifierForVendor?.UUIDString ?? UIDevice.currentDevice().name
+    public var deviceName: String = AromaClient.deviceName
 
 }
 
