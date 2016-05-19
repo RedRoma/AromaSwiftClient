@@ -1,7 +1,7 @@
 Pod::Spec.new do |aroma|
   aroma.name             = "AromaSwiftClient"
   aroma.module_name      = 'AromaSwiftClient'
-  aroma.version          = "1.2"
+  aroma.version          = "1.3"
   aroma.summary          = "The Official Aroma Swift Client."
   aroma.homepage         = "https://github.com/RedRoma/aroma-swift-client"
   aroma.license          = "Code is Licensed under Apache 2.0"
@@ -17,7 +17,7 @@ Pod::Spec.new do |aroma|
   aroma.requires_arc = false
 
   # aroma.dependency 'ThriftLib', '0.9.3'
-  aroma.dependency 'AromaThrift', '1.9'
+  aroma.dependency 'AromaThrift', '1.10'
   aroma.dependency 'SwiftExceptionCatcher', '1.1'
 
   # aroma.prepare_command = <<-CMD
