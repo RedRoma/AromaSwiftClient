@@ -26,7 +26,11 @@ public class AromaClient
     
     //Defaults
     public static var deviceName: String = UIDevice.currentDevice().name
-        
+    private static var messagePrefix = ""
+    public static func prependMessageWith(string string: String)
+    {
+        messagePrefix = string
+    }    
 
     //Async and Threading
     private static let async = NSOperationQueue()
