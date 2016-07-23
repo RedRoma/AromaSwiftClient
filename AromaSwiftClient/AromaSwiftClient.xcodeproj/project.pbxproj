@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B036AF59BEFD33EFCD44457 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B140FB6314C840E66D2EFD /* Pods.framework */; };
+		C12655F46F6891207F60CAAB /* Pods_AromaSwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E37C4CAF22352F8F8E2FFC33 /* Pods_AromaSwiftClient.framework */; };
 		DE1E06761CB5CFE9002D14CC /* AromaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */; };
 		DE1E06781CB611C9002D14CC /* AromaRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */; };
 		DE1E067A1CB61651002D14CC /* UseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06791CB61651002D14CC /* UseCaseTests.swift */; };
@@ -15,6 +16,7 @@
 		DE683D691CB37AD80072F98A /* AromaSwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE683D5E1CB37AD80072F98A /* AromaSwiftClient.framework */; };
 		DE683D6E1CB37AD80072F98A /* AromaSwiftClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE683D6D1CB37AD80072F98A /* AromaSwiftClientTests.swift */; };
 		DE683D791CB37B630072F98A /* AromaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE683D781CB37B630072F98A /* AromaClient.swift */; };
+		E96FCE599FA7D11170F96C2A /* Pods_AromaSwiftClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31E4E817E527E0BB536FCE5 /* Pods_AromaSwiftClientTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,8 +30,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E5BB44F9E172844338148D3 /* Pods-AromaSwiftClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AromaSwiftClient.release.xcconfig"; path = "../Pods/Target Support Files/Pods-AromaSwiftClient/Pods-AromaSwiftClient.release.xcconfig"; sourceTree = "<group>"; };
+		8DF29CC997C331062FEB4384 /* Pods-AromaSwiftClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AromaSwiftClientTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-AromaSwiftClientTests/Pods-AromaSwiftClientTests.release.xcconfig"; sourceTree = "<group>"; };
 		90B140FB6314C840E66D2EFD /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B325DB8A9D87C13D96346527 /* Pods-AromaSwiftClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AromaSwiftClientTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-AromaSwiftClientTests/Pods-AromaSwiftClientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BD659A887C51660DCF20BD6F /* Pods-AromaSwiftClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AromaSwiftClient.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-AromaSwiftClient/Pods-AromaSwiftClient.debug.xcconfig"; sourceTree = "<group>"; };
 		C56197EB224E719EF8AF6F09 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D31E4E817E527E0BB536FCE5 /* Pods_AromaSwiftClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AromaSwiftClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequest.swift; sourceTree = "<group>"; };
 		DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequestTests.swift; sourceTree = "<group>"; };
 		DE1E06791CB61651002D14CC /* UseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseTests.swift; sourceTree = "<group>"; };
@@ -40,6 +47,7 @@
 		DE683D6D1CB37AD80072F98A /* AromaSwiftClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AromaSwiftClientTests.swift; sourceTree = "<group>"; };
 		DE683D6F1CB37AD80072F98A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE683D781CB37B630072F98A /* AromaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaClient.swift; sourceTree = "<group>"; };
+		E37C4CAF22352F8F8E2FFC33 /* Pods_AromaSwiftClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AromaSwiftClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFB0A1BFA4C5017E6594B47 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B036AF59BEFD33EFCD44457 /* Pods.framework in Frameworks */,
+				C12655F46F6891207F60CAAB /* Pods_AromaSwiftClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE683D691CB37AD80072F98A /* AromaSwiftClient.framework in Frameworks */,
+				E96FCE599FA7D11170F96C2A /* Pods_AromaSwiftClientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				90B140FB6314C840E66D2EFD /* Pods.framework */,
+				E37C4CAF22352F8F8E2FFC33 /* Pods_AromaSwiftClient.framework */,
+				D31E4E817E527E0BB536FCE5 /* Pods_AromaSwiftClientTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -76,6 +88,10 @@
 			children = (
 				C56197EB224E719EF8AF6F09 /* Pods.debug.xcconfig */,
 				ECFB0A1BFA4C5017E6594B47 /* Pods.release.xcconfig */,
+				BD659A887C51660DCF20BD6F /* Pods-AromaSwiftClient.debug.xcconfig */,
+				0E5BB44F9E172844338148D3 /* Pods-AromaSwiftClient.release.xcconfig */,
+				B325DB8A9D87C13D96346527 /* Pods-AromaSwiftClientTests.debug.xcconfig */,
+				8DF29CC997C331062FEB4384 /* Pods-AromaSwiftClientTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -140,12 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE683D721CB37AD80072F98A /* Build configuration list for PBXNativeTarget "AromaSwiftClient" */;
 			buildPhases = (
-				FE29C7840392AA11AF96BD88 /* Check Pods Manifest.lock */,
+				FE29C7840392AA11AF96BD88 /* [CP] Check Pods Manifest.lock */,
 				DE683D591CB37AD80072F98A /* Sources */,
 				DE683D5A1CB37AD80072F98A /* Frameworks */,
 				DE683D5B1CB37AD80072F98A /* Headers */,
 				DE683D5C1CB37AD80072F98A /* Resources */,
-				6783CF9280DFDC4DE4C66AEA /* Copy Pods Resources */,
+				6783CF9280DFDC4DE4C66AEA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -160,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE683D751CB37AD80072F98A /* Build configuration list for PBXNativeTarget "AromaSwiftClientTests" */;
 			buildPhases = (
+				1C5EA47C559BA4A45938D971 /* [CP] Check Pods Manifest.lock */,
 				DE683D641CB37AD80072F98A /* Sources */,
 				DE683D651CB37AD80072F98A /* Frameworks */,
 				DE683D661CB37AD80072F98A /* Resources */,
+				A121FE0049D4A4E0A8107B4E /* [CP] Embed Pods Frameworks */,
+				529D13078F61F6B67523C002 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -186,9 +205,11 @@
 				TargetAttributes = {
 					DE683D5D1CB37AD80072F98A = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					DE683D671CB37AD80072F98A = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -228,29 +249,74 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6783CF9280DFDC4DE4C66AEA /* Copy Pods Resources */ = {
+		1C5EA47C559BA4A45938D971 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FE29C7840392AA11AF96BD88 /* Check Pods Manifest.lock */ = {
+		529D13078F61F6B67523C002 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-AromaSwiftClientTests/Pods-AromaSwiftClientTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6783CF9280DFDC4DE4C66AEA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-AromaSwiftClient/Pods-AromaSwiftClient-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A121FE0049D4A4E0A8107B4E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-AromaSwiftClientTests/Pods-AromaSwiftClientTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE29C7840392AA11AF96BD88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +452,7 @@
 		};
 		DE683D731CB37AD80072F98A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C56197EB224E719EF8AF6F09 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = BD659A887C51660DCF20BD6F /* Pods-AromaSwiftClient.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -401,12 +467,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DE683D741CB37AD80072F98A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECFB0A1BFA4C5017E6594B47 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 0E5BB44F9E172844338148D3 /* Pods-AromaSwiftClient.release.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -420,26 +487,31 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.redroma.AromaSwiftClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		DE683D761CB37AD80072F98A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B325DB8A9D87C13D96346527 /* Pods-AromaSwiftClientTests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AromaSwiftClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.redroma.AromaSwiftClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DE683D771CB37AD80072F98A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DF29CC997C331062FEB4384 /* Pods-AromaSwiftClientTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AromaSwiftClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.redroma.AromaSwiftClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
