@@ -9,7 +9,7 @@
 import XCTest
 @testable import AromaSwiftClient
 
-let TEST_TOKEN_ID = "6c2a0886-6a96-40c7-99f2-711fb8bdebf0"
+let TEST_TOKEN_ID = "f8da3ef6-79f1-44fe-bb93-20e1bf111bee"
 
 class AromaSwiftClientTests: XCTestCase
 {
