@@ -2,7 +2,7 @@
 //  AromaRequestTests.swift
 //  AromaSwiftClient
 //
-//  Created by Juan Wellington Moreno on 4/6/16.
+//  Created by Wellington Moreno on 4/6/16.
 //  Copyright © 2016 RedRoma, Inc. All rights reserved.
 //
 
