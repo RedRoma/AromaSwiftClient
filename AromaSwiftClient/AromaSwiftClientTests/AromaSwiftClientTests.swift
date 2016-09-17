@@ -59,14 +59,14 @@ class AromaSwiftClientTests: XCTestCase
     func testMessageSend()
     {
 
-        AromaClient.send(message, onError: onError, onDone: onDone)
+        AromaClient.send(message: message, onError: onError, onDone: onDone)
 
         while !isDone { }
     }
 
     func testBeginWithTitle()
     {
-        let result = AromaClient.beginWithTitle(message.title)
+        let result = AromaClient.being(withTitle: message.title)
         XCTAssertNotNil(result)
     }
     

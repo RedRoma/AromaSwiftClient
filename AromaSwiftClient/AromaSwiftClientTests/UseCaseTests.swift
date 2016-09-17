@@ -42,12 +42,12 @@ class UseCaseTests: XCTestCase
 
         let date = Date()
 
-        AromaClient.beginWithTitle(title)
+        AromaClient.being(withTitle: title)
             .addBody("Sending a test message as part of the unit test")
             .addLine().addLine()
             .addBody("Todays Date is \(date)")
             .withPriority(.low)
-            .send(onError, onDone: onDone)
+            .send(onError: onError, onDone: onDone)
 
     }
 

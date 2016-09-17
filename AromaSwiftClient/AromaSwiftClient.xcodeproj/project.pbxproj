@@ -16,6 +16,12 @@
 		DE4DA27E1D8DE2AE003183F4 /* SwiftExceptionCatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */; };
 		DE4DA2851D8DEA8B003183F4 /* AromaThrift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */; };
 		DE4DA2861D8DEA8B003183F4 /* AromaThrift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */; };
+		DE4DA2871D8DEB6F003183F4 /* AromaThrift.framework in Resources */ = {isa = PBXBuildFile; fileRef = DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */; };
+		DE4DA2881D8DEB6F003183F4 /* Sulcus.framework in Resources */ = {isa = PBXBuildFile; fileRef = DE4DA2771D8DE2AD003183F4 /* Sulcus.framework */; };
+		DE4DA2891D8DEB6F003183F4 /* SwiftExceptionCatcher.framework in Resources */ = {isa = PBXBuildFile; fileRef = DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */; };
+		DE4DA28B1D8DEBB5003183F4 /* AromaThrift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE4DA28C1D8DEBB5003183F4 /* Sulcus.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE4DA2771D8DE2AD003183F4 /* Sulcus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE4DA28D1D8DEBB5003183F4 /* SwiftExceptionCatcher.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE683D621CB37AD80072F98A /* AromaSwiftClient.h in Headers */ = {isa = PBXBuildFile; fileRef = DE683D611CB37AD80072F98A /* AromaSwiftClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE683D691CB37AD80072F98A /* AromaSwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE683D5E1CB37AD80072F98A /* AromaSwiftClient.framework */; };
 		DE683D6E1CB37AD80072F98A /* AromaSwiftClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE683D6D1CB37AD80072F98A /* AromaSwiftClientTests.swift */; };
@@ -31,6 +37,21 @@
 			remoteInfo = AromaSwiftClient;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DE4DA28A1D8DEBB1003183F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DE4DA28B1D8DEBB5003183F4 /* AromaThrift.framework in CopyFiles */,
+				DE4DA28C1D8DEBB5003183F4 /* Sulcus.framework in CopyFiles */,
+				DE4DA28D1D8DEBB5003183F4 /* SwiftExceptionCatcher.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequest.swift; sourceTree = "<group>"; };
@@ -160,12 +181,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE683D751CB37AD80072F98A /* Build configuration list for PBXNativeTarget "AromaSwiftClientTests" */;
 			buildPhases = (
-				03A14E1CC65CEEE1A01F9085 /* [CP] Check Pods Manifest.lock */,
 				DE683D641CB37AD80072F98A /* Sources */,
 				DE683D651CB37AD80072F98A /* Frameworks */,
 				DE683D661CB37AD80072F98A /* Resources */,
-				265A4A582BCE362217621A2D /* [CP] Embed Pods Frameworks */,
-				362E12401571510DDE040333 /* [CP] Copy Pods Resources */,
+				DE4DA28A1D8DEBB1003183F4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -227,58 +246,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE4DA2871D8DEB6F003183F4 /* AromaThrift.framework in Resources */,
+				DE4DA2881D8DEB6F003183F4 /* Sulcus.framework in Resources */,
+				DE4DA2891D8DEB6F003183F4 /* SwiftExceptionCatcher.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		03A14E1CC65CEEE1A01F9085 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		265A4A582BCE362217621A2D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-AromaSwiftClientTests/Pods-AromaSwiftClientTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		362E12401571510DDE040333 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-AromaSwiftClientTests/Pods-AromaSwiftClientTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DE683D591CB37AD80072F98A /* Sources */ = {
