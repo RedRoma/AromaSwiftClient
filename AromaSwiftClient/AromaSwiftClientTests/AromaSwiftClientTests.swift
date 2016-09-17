@@ -14,9 +14,9 @@ let TEST_TOKEN_ID = "f8da3ef6-79f1-44fe-bb93-20e1bf111bee"
 class AromaSwiftClientTests: XCTestCase
 {
     
-    private var message: AromaRequest!
+    fileprivate var message: AromaRequest!
     
-    private dynamic var isDone = false
+    fileprivate dynamic var isDone = false
    
 
     override func setUp()
@@ -26,7 +26,7 @@ class AromaSwiftClientTests: XCTestCase
         message = AromaRequest()
         message.title = "some title"
         message.body = "some body"
-        message.priority = .LOW
+        message.priority = .low
         
         isDone = false
         
@@ -41,7 +41,7 @@ class AromaSwiftClientTests: XCTestCase
         AromaClient.TOKEN_ID = ""
     }
 
-    private func testDefaultValues()
+    fileprivate func testDefaultValues()
     {
         XCTAssertNotNil(AromaClient.hostname)
         XCTAssertNotNil(AromaClient.port)
@@ -94,12 +94,12 @@ class AromaSwiftClientTests: XCTestCase
         while !isDone { }
     }
     
-    private func onError(ex: ErrorType)
+    fileprivate func onError(_ ex: Error)
     {
         XCTFail("Failed to send message: \(ex)")
     }
     
-    private func onDone()
+    fileprivate func onDone()
     {
         print("Message sent!")
         

@@ -12,7 +12,7 @@ import XCTest
 class AromaRequestTests: XCTestCase
 {
 
-    private var instance: AromaRequest!
+    fileprivate var instance: AromaRequest!
 
     override func setUp()
     {
@@ -22,7 +22,7 @@ class AromaRequestTests: XCTestCase
 
         instance.title = "message title"
         instance.body = "some body"
-        instance.priority = .LOW
+        instance.priority = .low
     }
 
     override func tearDown()
@@ -30,7 +30,7 @@ class AromaRequestTests: XCTestCase
         super.tearDown()
     }
     
-    private func clearBody()
+    fileprivate func clearBody()
     {
         instance.body = nil
     }
@@ -111,7 +111,7 @@ class AromaRequestTests: XCTestCase
     func testWithUrgency()
     {
 
-        let newUrgecy: AromaRequest.Priority = .HIGH
+        let newUrgecy: AromaRequest.Priority = .high
         let result = instance.withPriority(newUrgecy)
 
         XCTAssert(result.priority == newUrgecy)

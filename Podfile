@@ -22,7 +22,7 @@ pod 'AromaThrift', '1.9'
 
 #===============================
 # SWIFT EXCEPTION CATCHER
-pod 'SwiftExceptionCatcher', '1.1'
+pod 'SwiftExceptionCatcher', '1.2'
 #===============================
 
 target 'AromaSwiftClient' do

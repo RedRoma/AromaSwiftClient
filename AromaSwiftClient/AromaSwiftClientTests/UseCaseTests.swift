@@ -12,9 +12,9 @@ import AromaSwiftClient
 class UseCaseTests: XCTestCase
 {
 
-    private let tokenId = TEST_TOKEN_ID
+    fileprivate let tokenId = TEST_TOKEN_ID
 
-    private let title = "Unit Test Ran"
+    fileprivate let title = "Unit Test Ran"
 
     override func setUp()
     {
@@ -40,13 +40,13 @@ class UseCaseTests: XCTestCase
             print("Successfully sent message")
         }
 
-        let date = NSDate()
+        let date = Date()
 
         AromaClient.beginWithTitle(title)
             .addBody("Sending a test message as part of the unit test")
             .addLine().addLine()
             .addBody("Todays Date is \(date)")
-            .withPriority(.LOW)
+            .withPriority(.low)
             .send(onError, onDone: onDone)
 
     }

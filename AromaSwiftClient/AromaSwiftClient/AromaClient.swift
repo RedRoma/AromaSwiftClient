@@ -15,10 +15,10 @@ public class AromaClient
 {
 
     public typealias OnDone = () -> Void
-    public typealias OnError = (ErrorType) -> Void
+    public typealias OnError = (Error) -> Void
 
     //Endpoint management
-    private static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.PRODUCTION_ENDPOINT()
+    fileprivate static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.production_ENDPOINT()
   
     public static var hostname = DEFAULT_ENDPOINT.hostname
     public static var port = UInt32(DEFAULT_ENDPOINT.port)
@@ -29,9 +29,11 @@ public class AromaClient
         
 
     //Async and Threading
-    private static let async = NSOperationQueue()
-    private static let main = NSOperationQueue.mainQueue()
-    public static var maxConcurrency: Int = 1 {
+    fileprivate static let async = OperationQueue()
+    fileprivate static let main = OperationQueue.main
+    
+    public static var maxConcurrency: Int = 1
+    {
         didSet
         {
             if maxConcurrency >= 1
@@ -43,12 +45,13 @@ public class AromaClient
 
     //Token Management
     public static var TOKEN_ID: String = ""
-    private static var APP_TOKEN: ApplicationService_ApplicationToken?
+    
+    fileprivate static var APP_TOKEN: ApplicationService_ApplicationToken?
     {
         guard !TOKEN_ID.isEmpty else { return nil }
 
         let token = ApplicationService_ApplicationToken()
-        token.tokenId = TOKEN_ID
+        token?.tokenId = TOKEN_ID
         return token
     }
 
@@ -58,7 +61,7 @@ public class AromaClient
         let tTransport = TSocketClient(hostname: AromaClient.hostname, port: AromaClient.port)
         let tProtocol = TBinaryProtocol(transport: tTransport)
 
-        return ApplicationService_ApplicationServiceClient(withProtocol: tProtocol)
+        return ApplicationService_ApplicationServiceClient(with: tProtocol)
     }
 }
 
@@ -66,7 +69,7 @@ public class AromaClient
 extension AromaClient
 {
 
-    public static func beginWithTitle(title: String) -> AromaRequest
+    public static func being(withTitle title: String) -> AromaRequest
     {
         return AromaRequest().withTitle(title)
     }
@@ -80,7 +83,7 @@ extension AromaClient
             return
         }
 
-        self.async.addOperationWithBlock()
+        self.async.addOperation()
         {
 
             defer
@@ -115,46 +118,46 @@ extension AromaClient
 
     public static func sendHighPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
     {
-        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.HIGH)
+        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.high)
         send(request, onError: onError, onDone: onDone)
     }
 
     public static func sendMediumPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
     {
-        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.MEDIUM)
+        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.medium)
         send(request, onError: onError, onDone: onDone)
     }
 
     public static func sendLowPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
     {
-        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.LOW)
+        let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.low)
         send(request, onError: onError, onDone: onDone)
     }
 
 }
 
-extension AromaClient
+fileprivate extension AromaClient
 {
 
-    private static func toRequestObject(message: AromaRequest) -> ApplicationService_SendMessageRequest
+    static func toRequestObject(_ message: AromaRequest) -> ApplicationService_SendMessageRequest
     {
 
         let request = ApplicationService_SendMessageRequest()
-        request.body = message.body
-        request.title = message.title
-        request.hostname = message.deviceName
-        request.timeOfMessage = currentTimestamp
-        request.urgency = Int32(message.priority.toThrift())
+        request?.body = message.body
+        request?.title = message.title
+        request?.hostname = message.deviceName
+        request?.timeOfMessage = currentTimestamp
+        request?.urgency = Int32(message.priority.toThrift())
 
         //We set the App Token
-        request.applicationToken = APP_TOKEN
+        request?.applicationToken = APP_TOKEN
 
-        return request
+        return request!
     }
 
-    private static var currentTimestamp: Aroma_timestamp
+    static var currentTimestamp: Aroma_timestamp
     {
-        let now = NSDate()
+        let now = Date()
         return Aroma_timestamp(now.timeIntervalSince1970 * 1000)
     }
 }

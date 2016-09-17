@@ -15,17 +15,17 @@ public struct AromaRequest : Equatable
 
     public enum Priority: UInt32
     {
-        case LOW
-        case MEDIUM
-        case HIGH
+        case low
+        case medium
+        case high
 
         func toThrift() -> UInt32
         {
             switch self
             {
-                case .LOW : return Urgency_LOW.rawValue
-                case .MEDIUM : return Urgency_MEDIUM.rawValue
-                case .HIGH : return Urgency_HIGH.rawValue
+                case .low : return Urgency_LOW.rawValue
+                case .medium : return Urgency_MEDIUM.rawValue
+                case .high : return Urgency_HIGH.rawValue
             }
         }
     }
@@ -34,7 +34,7 @@ public struct AromaRequest : Equatable
     //MARK: Public properties
     public var title: String = ""
     public var body: String? = ""
-    public var priority: AromaRequest.Priority = .LOW
+    public var priority: AromaRequest.Priority = .low
     public var deviceName: String = AromaClient.deviceName
 
 }
@@ -66,7 +66,7 @@ public func == (lhs: AromaRequest, rhs: AromaRequest) -> Bool
     return true
 }
 
-func equals<T:Equatable> (left: T?, right: T?) -> Bool
+func equals<T:Equatable> (_ left: T?, right: T?) -> Bool
 {
 
     if let left = left, let right = right
@@ -82,34 +82,34 @@ func equals<T:Equatable> (left: T?, right: T?) -> Bool
 extension AromaRequest
 {
 
-    public func addBody(body: String) -> AromaRequest
+    public func addBody(_ body: String) -> AromaRequest
     {
         let newBody = (self.body ?? "") + body
         return AromaRequest(title: title, body: newBody, priority: priority, deviceName: deviceName)
     }
 
-    public func addLine(number: Int = 1) -> AromaRequest
+    public func addLine(_ number: Int = 1) -> AromaRequest
     {
         
         guard number > 0 else { return self }
         
         let newLineCharacter = Character("\n")
-        let newBody = (self.body ?? "") + String(count: number, repeatedValue: newLineCharacter)
+        let newBody = (self.body ?? "") + String(repeating: String(newLineCharacter), count: number)
         
         return AromaRequest(title: title, body: newBody, priority: priority, deviceName: deviceName)
     }
 
-    public func withDeviceName(deviceName: String) -> AromaRequest
+    public func withDeviceName(_ deviceName: String) -> AromaRequest
     {
         return AromaRequest(title: title, body: body, priority: priority, deviceName: deviceName)
     }
 
-    public func withTitle(title: String) -> AromaRequest
+    public func withTitle(_ title: String) -> AromaRequest
     {
         return AromaRequest(title: title, body: body, priority: priority, deviceName: deviceName)
     }
 
-    public func withPriority(priority: AromaRequest.Priority) -> AromaRequest
+    public func withPriority(_ priority: AromaRequest.Priority) -> AromaRequest
     {
         return AromaRequest(title: title, body: body, priority: priority, deviceName: deviceName)
     }
