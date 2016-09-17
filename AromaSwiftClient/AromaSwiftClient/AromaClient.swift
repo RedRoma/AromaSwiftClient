@@ -18,14 +18,14 @@ public class AromaClient
     public typealias OnError = (Error) -> Void
 
     //Endpoint management
-    fileprivate static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.production_ENDPOINT()
+    fileprivate static let DEFAULT_ENDPOINT = ApplicationService_ApplicationServiceConstants.production_ENDPOINT()!
   
     public static var hostname = DEFAULT_ENDPOINT.hostname
     public static var port = UInt32(DEFAULT_ENDPOINT.port)
     
     
     //Defaults
-    public static var deviceName: String = UIDevice.currentDevice().name
+    public static var deviceName: String = UIDevice.current.name
         
 
     //Async and Threading
@@ -69,7 +69,7 @@ public class AromaClient
 extension AromaClient
 {
 
-    public static func being(withTitle title: String) -> AromaRequest
+    public static func being(withTitle title: String) -> AromaRequest
     {
         return AromaRequest().withTitle(title)
     }
@@ -119,19 +119,19 @@ extension AromaClient
     public static func sendHighPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
     {
         let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.high)
-        send(request, onError: onError, onDone: onDone)
+        send(message: request, onError: onError, onDone: onDone)
     }
 
     public static func sendMediumPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
     {
         let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.medium)
-        send(request, onError: onError, onDone: onDone)
+        send(message: request, onError: onError, onDone: onDone)
     }
 
     public static func sendLowPriorityMessage(withTitle title: String, withBody body: String? = nil, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
     {
         let request = AromaRequest().withTitle(title).addBody(body ?? "").withPriority(.low)
-        send(request, onError: onError, onDone: onDone)
+        send(message: request, onError: onError, onDone: onDone)
     }
 
 }

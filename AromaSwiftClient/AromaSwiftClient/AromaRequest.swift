@@ -116,6 +116,6 @@ extension AromaRequest
 
     public func send(onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
     {
-        AromaClient.send(self, onError: onError, onDone: onDone)
+        AromaClient.send(message: self, onError: onError, onDone: onDone)
     }
 }
