@@ -20,9 +20,9 @@
   <body>
       <div id="header">
         <nav>
-          <li class="fork"><a href="https://github.com/RedRoma/aroma-swift-client">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/RedRoma/aroma-swift-client/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/RedRoma/aroma-swift-client/tarball/master">TAR</a></li>
+          <li class="fork"><a href="https://github.com/RedRoma/AromaSwiftClient">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/RedRoma/AromaSwiftClient/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/RedRoma/AromaSwiftClient/tarball/master">TAR</a></li>
           <li class="title">DOWNLOADS</li>
         </nav>
       </div><!-- end header -->
@@ -47,32 +47,11 @@
 <a id="the-official-swift-and-ios-client-to-aroma" class="anchor" href="#the-official-swift-and-ios-client-to-aroma" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Official Swift and iOS Client to Aroma</h2>
 
 <h1>
-<a id="cocoapods" class="anchor" href="#cocoapods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CocoaPods</h1>
+<a id="carthage" class="anchor" href="#carthage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Carthage</h1>
 
-<p>Aroma provides easy integration with CocoaPods.</p>
+<p>Aroma provides easy integration with Carthage.</p>
 
-<h2>
-<a id="add-redroma-repository" class="anchor" href="#add-redroma-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add RedRoma Repository</h2>
-
-<p>In order to use Aroma, add the <strong>RedRoma™</strong> Spec repo to your <code>Podfile</code>.</p>
-
-<div class="highlight highlight-text-xml"><pre>source 'https://github.com/RedRoma/CocoaSpecs.git'</pre></div>
-
-<h2>
-<a id="add-the-pod" class="anchor" href="#add-the-pod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add the Pod</h2>
-
-<p>After adding the <strong>RedRoma™</strong> Repo, add the following line to your <code>Podfile</code>.</p>
-
-<div class="highlight highlight-text-xml"><pre>pod 'AromaSwiftClient', '1.0'</pre></div>
-
-<blockquote>
-<h3>
-<a id="latest-release" class="anchor" href="#latest-release" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Latest Release</h3>
-
-<p>For the latest release, use the following line instead</p>
-
-<div class="highlight highlight-text-xml"><pre>pod 'AromaSwiftClient', :git =&gt; 'https://github.com/RedRoma/aroma-swift-client.git', :branch =&gt; 'develop'</pre></div>
-</blockquote>
+<div class="highlight highlight-source-ruby"><pre>github <span class="pl-s"><span class="pl-pds">"</span>RedRoma/AromaSwiftClient<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>develop<span class="pl-pds">"</span></span></pre></div>
 
 <h1>
 <a id="api" class="anchor" href="#api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h1>
@@ -82,7 +61,7 @@
 
 <p>Add the following import statement wherever you use the Aroma Client.</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> AromaSwiftClient</pre></div>
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">import</span> <span class="pl-c1">AromaSwiftClient</span></pre></div>
 
 <h2>
 <a id="setup-the-token" class="anchor" href="#setup-the-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup the Token</h2>
@@ -98,17 +77,17 @@
 
 <p>Put this in your <code>AppDelegate</code> when the Application Loads.</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">AromaClient</span>.<span class="pl-c1">TOKEN_ID</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>abcdefgh-1234-474c-ae46-1234567890ab<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-swift"><pre>AromaClient<span class="pl-k">.</span>TOKEN_ID <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>abcdefgh-1234-474c-ae46-1234567890ab<span class="pl-pds">"</span></span></pre></div>
 
 <h2>
 <a id="send-a-message" class="anchor" href="#send-a-message" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Send a Message</h2>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">AromaClient</span>.<span class="pl-en">beginWithTitle</span>(<span class="pl-s"><span class="pl-pds">"</span>Operation Failed<span class="pl-pds">"</span></span>)
-    .<span class="pl-en">addBody</span>(<span class="pl-s"><span class="pl-pds">"</span>Details: <span class="pl-cce">\(</span>error)<span class="pl-pds">"</span></span>)
-    .<span class="pl-en">addLine</span>(<span class="pl-c1">2</span>)
-    .<span class="pl-en">addBody</span>(<span class="pl-s"><span class="pl-pds">"</span>For User <span class="pl-cce">\(</span>user)<span class="pl-pds">"</span></span>)
-    .<span class="pl-en">withPriority</span>(.<span class="pl-c1">LOW</span>)
-    .<span class="pl-c1">send</span>()</pre></div>
+<div class="highlight highlight-source-swift"><pre>AromaClient<span class="pl-k">.</span>begin(withTitle: <span class="pl-s"><span class="pl-pds">"</span>Operation Failed<span class="pl-pds">"</span></span>)
+    <span class="pl-k">.</span>addBody(<span class="pl-s"><span class="pl-pds">"</span>Details: <span class="pl-pse">\(</span><span class="pl-s1">error</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)
+    <span class="pl-k">.</span>addLine(<span class="pl-c1">2</span>)
+    <span class="pl-k">.</span>addBody(<span class="pl-s"><span class="pl-pds">"</span>For User <span class="pl-pse">\(</span><span class="pl-s1">user</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)
+    <span class="pl-k">.</span>withPriority(<span class="pl-k">.</span>low)
+    <span class="pl-k">.</span>send()</pre></div>
 
 <h1>
 <a id="best-practices" class="anchor" href="#best-practices" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Best Practices</h1>
