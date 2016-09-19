@@ -19,7 +19,7 @@ github "RedRoma/AromaSwiftClient" "develop"
 ## Import the Module
 Add the following import statement wherever you use the Aroma Client.
 
-```js
+```swift
 import AromaSwiftClient
 ```
 
@@ -34,13 +34,13 @@ abcdefgh-1234-474c-ae46-1234567890ab
 
 Put this in your `AppDelegate` when the Application Loads.
 
-```js
+```swift
 AromaClient.TOKEN_ID = "abcdefgh-1234-474c-ae46-1234567890ab"
 ```
 
 ## Send a Message
 
-```js
+```swift
 AromaClient.begin(withTitle: "Operation Failed")
     .addBody("Details: \(error)")
     .addLine(2)
