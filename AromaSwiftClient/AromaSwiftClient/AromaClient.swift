@@ -69,7 +69,7 @@ public class AromaClient
 extension AromaClient
 {
 
-    public static func being(withTitle title: String) -> AromaRequest
+    public static func beginMessage(withTitle title: String) -> AromaRequest
     {
         return AromaRequest().withTitle(title)
     }

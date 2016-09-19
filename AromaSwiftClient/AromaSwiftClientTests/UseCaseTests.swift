@@ -42,7 +42,7 @@ class UseCaseTests: XCTestCase
 
         let date = Date()
 
-        AromaClient.being(withTitle: title)
+        AromaClient.beginMessage(withTitle: title)
             .addBody("Sending a test message as part of the unit test")
             .addLine().addLine()
             .addBody("Todays Date is \(date)")

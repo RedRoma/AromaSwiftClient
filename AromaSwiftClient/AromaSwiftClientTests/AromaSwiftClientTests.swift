@@ -66,7 +66,7 @@ class AromaSwiftClientTests: XCTestCase
 
     func testBeginWithTitle()
     {
-        let result = AromaClient.being(withTitle: message.title)
+        let result = AromaClient.beginMessage(withTitle: message.title)
         XCTAssertNotNil(result)
     }
     
