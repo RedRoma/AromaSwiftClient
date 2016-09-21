@@ -2,7 +2,7 @@
 //  UseCaseTests.swift
 //  AromaSwiftClient
 //
-//  Created by Juan Wellington Moreno on 4/6/16.
+//  Created by Wellington Moreno on 4/6/16.
 //  Copyright © 2016 RedRoma, Inc. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ import AromaSwiftClient
 class UseCaseTests: XCTestCase
 {
 
-    private let tokenId = TEST_TOKEN_ID
+    fileprivate let tokenId = TEST_TOKEN_ID
 
-    private let title = "Unit Test Ran"
+    fileprivate let title = "Unit Test Ran"
 
     override func setUp()
     {
@@ -40,14 +40,14 @@ class UseCaseTests: XCTestCase
             print("Successfully sent message")
         }
 
-        let date = NSDate()
+        let date = Date()
 
-        AromaClient.beginWithTitle(title)
+        AromaClient.beginMessage(withTitle: title)
             .addBody("Sending a test message as part of the unit test")
             .addLine().addLine()
             .addBody("Todays Date is \(date)")
-            .withPriority(.LOW)
-            .send(onError, onDone: onDone)
+            .withPriority(.low)
+            .send(onError: onError, onDone: onDone)
 
     }
 

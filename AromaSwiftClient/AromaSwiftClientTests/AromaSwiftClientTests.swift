@@ -2,21 +2,21 @@
 //  AromaSwiftClientTests.swift
 //  AromaSwiftClientTests
 //
-//  Created by Juan Wellington Moreno on 4/4/16.
+//  Created by Wellington Moreno on 4/4/16.
 //  Copyright © 2016 RedRoma, Inc. All rights reserved.
 //
 
 import XCTest
 @testable import AromaSwiftClient
 
-let TEST_TOKEN_ID = "6c2a0886-6a96-40c7-99f2-711fb8bdebf0"
+let TEST_TOKEN_ID = "f8da3ef6-79f1-44fe-bb93-20e1bf111bee"
 
 class AromaSwiftClientTests: XCTestCase
 {
     
-    private var message: AromaRequest!
+    fileprivate var message: AromaRequest!
     
-    private dynamic var isDone = false
+    fileprivate dynamic var isDone = false
    
 
     override func setUp()
@@ -26,7 +26,7 @@ class AromaSwiftClientTests: XCTestCase
         message = AromaRequest()
         message.title = "some title"
         message.body = "some body"
-        message.priority = .LOW
+        message.priority = .low
         
         isDone = false
         
@@ -41,7 +41,7 @@ class AromaSwiftClientTests: XCTestCase
         AromaClient.TOKEN_ID = ""
     }
 
-    private func testDefaultValues()
+    fileprivate func testDefaultValues()
     {
         XCTAssertNotNil(AromaClient.hostname)
         XCTAssertNotNil(AromaClient.port)
@@ -59,14 +59,14 @@ class AromaSwiftClientTests: XCTestCase
     func testMessageSend()
     {
 
-        AromaClient.send(message, onError: onError, onDone: onDone)
+        AromaClient.send(message: message, onError: onError, onDone: onDone)
 
         while !isDone { }
     }
 
     func testBeginWithTitle()
     {
-        let result = AromaClient.beginWithTitle(message.title)
+        let result = AromaClient.beginMessage(withTitle: message.title)
         XCTAssertNotNil(result)
     }
     
@@ -94,12 +94,12 @@ class AromaSwiftClientTests: XCTestCase
         while !isDone { }
     }
     
-    private func onError(ex: ErrorType)
+    fileprivate func onError(_ ex: Error)
     {
         XCTFail("Failed to send message: \(ex)")
     }
     
-    private func onDone()
+    fileprivate func onDone()
     {
         print("Message sent!")
         

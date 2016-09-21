@@ -4,38 +4,22 @@ Aroma Swift Client
 [<img src="https://raw.githubusercontent.com/RedRoma/aroma/develop/Graphics/Logo.png" width="300">](http://aroma.redroma.tech/)
 ## The Official Swift and iOS Client to Aroma
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://travis-ci.org/RedRoma/AromaSwiftClient.svg?branch=develop)](https://travis-ci.org/RedRoma/AromaSwiftClient)
 
-# CocoaPods
+# Carthage
 
-Aroma provides easy integration with CocoaPods.
+Aroma provides easy integration with Carthage.
 
-## Add RedRoma Repository
-
-In order to use Aroma, add the **RedRoma™** Spec repo to your `Podfile`.
-
-```xml
-source 'https://github.com/RedRoma/CocoaSpecs.git'
+```ruby
+github "RedRoma/AromaSwiftClient" "develop"
 ```
-
-## Add the Pod
-After adding the **RedRoma™** Repo, add the following line to your `Podfile`.
-
-```xml
-pod 'AromaSwiftClient', '1.0'
-```
-
->### Latest Release
-For the latest release, use the following line instead
-```xml
-pod 'AromaSwiftClient', :git => 'https://github.com/RedRoma/aroma-swift-client.git', :branch => 'develop'
-```
-
 # API
 
 ## Import the Module
 Add the following import statement wherever you use the Aroma Client.
 
-```js
+```swift
 import AromaSwiftClient
 ```
 
@@ -50,18 +34,18 @@ abcdefgh-1234-474c-ae46-1234567890ab
 
 Put this in your `AppDelegate` when the Application Loads.
 
-```js
+```swift
 AromaClient.TOKEN_ID = "abcdefgh-1234-474c-ae46-1234567890ab"
 ```
 
 ## Send a Message
 
-```js
-AromaClient.beginWithTitle("Operation Failed")
+```swift
+AromaClient.begin(withTitle: "Operation Failed")
     .addBody("Details: \(error)")
     .addLine(2)
     .addBody("For User \(user)")
-    .withPriority(.LOW)
+    .withPriority(.low)
     .send()
 ```
 
