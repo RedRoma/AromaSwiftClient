@@ -10,17 +10,13 @@
 		DE1E06761CB5CFE9002D14CC /* AromaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */; };
 		DE1E06781CB611C9002D14CC /* AromaRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */; };
 		DE1E067A1CB61651002D14CC /* UseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06791CB61651002D14CC /* UseCaseTests.swift */; };
-		DE4DA27B1D8DE2AD003183F4 /* Sulcus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2771D8DE2AD003183F4 /* Sulcus.framework */; };
-		DE4DA27C1D8DE2AD003183F4 /* Sulcus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2771D8DE2AD003183F4 /* Sulcus.framework */; };
 		DE4DA27D1D8DE2AE003183F4 /* SwiftExceptionCatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */; };
 		DE4DA27E1D8DE2AE003183F4 /* SwiftExceptionCatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */; };
 		DE4DA2851D8DEA8B003183F4 /* AromaThrift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */; };
 		DE4DA2861D8DEA8B003183F4 /* AromaThrift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */; };
 		DE4DA2871D8DEB6F003183F4 /* AromaThrift.framework in Resources */ = {isa = PBXBuildFile; fileRef = DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */; };
-		DE4DA2881D8DEB6F003183F4 /* Sulcus.framework in Resources */ = {isa = PBXBuildFile; fileRef = DE4DA2771D8DE2AD003183F4 /* Sulcus.framework */; };
 		DE4DA2891D8DEB6F003183F4 /* SwiftExceptionCatcher.framework in Resources */ = {isa = PBXBuildFile; fileRef = DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */; };
 		DE4DA28B1D8DEBB5003183F4 /* AromaThrift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DE4DA28C1D8DEBB5003183F4 /* Sulcus.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE4DA2771D8DE2AD003183F4 /* Sulcus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE4DA28D1D8DEBB5003183F4 /* SwiftExceptionCatcher.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE683D621CB37AD80072F98A /* AromaSwiftClient.h in Headers */ = {isa = PBXBuildFile; fileRef = DE683D611CB37AD80072F98A /* AromaSwiftClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE683D691CB37AD80072F98A /* AromaSwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE683D5E1CB37AD80072F98A /* AromaSwiftClient.framework */; };
@@ -46,7 +42,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				DE4DA28B1D8DEBB5003183F4 /* AromaThrift.framework in CopyFiles */,
-				DE4DA28C1D8DEBB5003183F4 /* Sulcus.framework in CopyFiles */,
 				DE4DA28D1D8DEBB5003183F4 /* SwiftExceptionCatcher.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,7 +52,6 @@
 		DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequest.swift; sourceTree = "<group>"; };
 		DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequestTests.swift; sourceTree = "<group>"; };
 		DE1E06791CB61651002D14CC /* UseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseTests.swift; sourceTree = "<group>"; };
-		DE4DA2771D8DE2AD003183F4 /* Sulcus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sulcus.framework; sourceTree = "<group>"; };
 		DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftExceptionCatcher.framework; sourceTree = "<group>"; };
 		DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AromaThrift.framework; sourceTree = "<group>"; };
 		DE683D5E1CB37AD80072F98A /* AromaSwiftClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AromaSwiftClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +69,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE4DA27D1D8DE2AE003183F4 /* SwiftExceptionCatcher.framework in Frameworks */,
-				DE4DA27B1D8DE2AD003183F4 /* Sulcus.framework in Frameworks */,
 				DE4DA2851D8DEA8B003183F4 /* AromaThrift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE4DA27C1D8DE2AD003183F4 /* Sulcus.framework in Frameworks */,
 				DE4DA27E1D8DE2AE003183F4 /* SwiftExceptionCatcher.framework in Frameworks */,
 				DE4DA2861D8DEA8B003183F4 /* AromaThrift.framework in Frameworks */,
 				DE683D691CB37AD80072F98A /* AromaSwiftClient.framework in Frameworks */,
@@ -98,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				DE4DA2841D8DEA8B003183F4 /* AromaThrift.framework */,
-				DE4DA2771D8DE2AD003183F4 /* Sulcus.framework */,
 				DE4DA2781D8DE2AD003183F4 /* SwiftExceptionCatcher.framework */,
 			);
 			name = Frameworks;
@@ -247,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE4DA2871D8DEB6F003183F4 /* AromaThrift.framework in Resources */,
-				DE4DA2881D8DEB6F003183F4 /* Sulcus.framework in Resources */,
 				DE4DA2891D8DEB6F003183F4 /* SwiftExceptionCatcher.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
