@@ -1,2 +1,2 @@
-github "RedRoma/AromaThrift" "develop"
+github "RedRoma/AromaThrift"
 github "RedRoma/SwiftExceptionCatcher"
