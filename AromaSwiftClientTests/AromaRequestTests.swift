@@ -64,6 +64,7 @@ class AromaRequestTests: AlchemyTest
         assertNotEquals(result, instance)
     }
 
+    
     func testMultipleAddBody()
     {
         clearBody()
@@ -92,7 +93,7 @@ class AromaRequestTests: AlchemyTest
                              .addLine(2)
                              .addBody(second)
         
-        assertNotEquals(result.body, expected)
+        assertEquals(result.body, expected)
     }
 
     func testWithDeviceName()
