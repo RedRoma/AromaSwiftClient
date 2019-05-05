@@ -1,3 +1,4 @@
+github "SirWellington/AlchemyGenerator"
 github "SirWellington/AlchemyTest"
 github "RedRoma/AromaThrift"
 github "RedRoma/SwiftExceptionCatcher"
