@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		135A67D9227F8E7D0063435C /* AlchemyTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135A67D7227F8E7D0063435C /* AlchemyTest.framework */; };
+		135A67DA227F8E7D0063435C /* AlchemyGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135A67D8227F8E7D0063435C /* AlchemyGenerator.framework */; };
+		135A67DB227F8F050063435C /* AlchemyGenerator.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 135A67D8227F8E7D0063435C /* AlchemyGenerator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		135A67DC227F8F060063435C /* AlchemyTest.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 135A67D7227F8E7D0063435C /* AlchemyTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE1E06761CB5CFE9002D14CC /* AromaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */; };
 		DE1E06781CB611C9002D14CC /* AromaRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */; };
 		DE1E067A1CB61651002D14CC /* UseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E06791CB61651002D14CC /* UseCaseTests.swift */; };
@@ -37,6 +41,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				135A67DB227F8F050063435C /* AlchemyGenerator.framework in Copy Frameworks */,
+				135A67DC227F8F060063435C /* AlchemyTest.framework in Copy Frameworks */,
 				DECFBC981DC8141E0054A6FE /* AromaThrift.framework in Copy Frameworks */,
 				DECFBC991DC8141E0054A6FE /* SwiftExceptionCatcher.framework in Copy Frameworks */,
 			);
@@ -46,6 +52,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		135A67D7227F8E7D0063435C /* AlchemyTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyTest.framework; path = Carthage/Build/iOS/AlchemyTest.framework; sourceTree = "<group>"; };
+		135A67D8227F8E7D0063435C /* AlchemyGenerator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyGenerator.framework; path = Carthage/Build/iOS/AlchemyGenerator.framework; sourceTree = "<group>"; };
 		DE1E06751CB5CFE9002D14CC /* AromaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequest.swift; sourceTree = "<group>"; };
 		DE1E06771CB611C9002D14CC /* AromaRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AromaRequestTests.swift; sourceTree = "<group>"; };
 		DE1E06791CB61651002D14CC /* UseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseTests.swift; sourceTree = "<group>"; };
@@ -74,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				135A67DA227F8E7D0063435C /* AlchemyGenerator.framework in Frameworks */,
+				135A67D9227F8E7D0063435C /* AlchemyTest.framework in Frameworks */,
 				DECFBC9A1DC814260054A6FE /* AromaSwiftClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +94,8 @@
 		0FB70E426EB27E8866DB8ECE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				135A67D8227F8E7D0063435C /* AlchemyGenerator.framework */,
+				135A67D7227F8E7D0063435C /* AlchemyTest.framework */,
 				DECFBC8E1DC8125D0054A6FE /* AromaThrift.framework */,
 				DECFBC8F1DC8125D0054A6FE /* SwiftExceptionCatcher.framework */,
 			);
@@ -319,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -374,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

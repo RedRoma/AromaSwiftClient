@@ -6,18 +6,18 @@
 //  Copyright © 2016 RedRoma, Inc. All rights reserved.
 //
 
+import AlchemyGenerator
+import AlchemyTest
 import XCTest
 @testable import AromaSwiftClient
 
-class AromaRequestTests: XCTestCase
+class AromaRequestTests: AlchemyTest
 {
 
     fileprivate var instance: AromaRequest!
-
-    override func setUp()
+    
+    override func beforeEachTest()
     {
-        super.setUp()
-
         instance = AromaRequest()
 
         instance.title = "message title"
@@ -25,12 +25,12 @@ class AromaRequestTests: XCTestCase
         instance.priority = .low
     }
 
-    override func tearDown()
+    override func afterEachTest()
     {
-        super.tearDown()
+        clearBody()
     }
     
-    fileprivate func clearBody()
+    private func clearBody()
     {
         instance.body = nil
     }
@@ -42,11 +42,11 @@ class AromaRequestTests: XCTestCase
         let newTitle = "new title"
         let result = instance.withTitle(newTitle)
 
-        XCTAssert(result.title == newTitle)
-        XCTAssert(result.body == instance.body)
-        XCTAssert(result.priority == instance.priority)
-        XCTAssert(result.deviceName == instance.deviceName)
-        XCTAssert(result != instance)
+        assertEquals(result.title, newTitle)
+        assertEquals(result.body, instance.body)
+        assertEquals(result.priority, instance.priority)
+        assertEquals(result.deviceName, instance.deviceName)
+        assertNotEquals(result, instance)
 
     }
 
@@ -57,11 +57,11 @@ class AromaRequestTests: XCTestCase
         let newBody = "new Body"
         let result = instance.addBody(newBody)
 
-        XCTAssert(result.body == newBody)
-        XCTAssert(result.title == instance.title)
-        XCTAssert(result.deviceName == instance.deviceName)
-        XCTAssert(result.priority == instance.priority)
-        XCTAssert(result != instance)
+        assertEquals(result.body, newBody)
+        assertEquals(result.title, instance.title)
+        assertEquals(result.deviceName, instance.deviceName)
+        assertEquals(result.priority, instance.priority)
+        assertNotEquals(result, instance)
     }
 
     func testMultipleAddBody()
@@ -74,10 +74,10 @@ class AromaRequestTests: XCTestCase
         let result = instance.addBody(first)
                              .addBody(second)
 
-        XCTAssert(result.body == first + second)
-        XCTAssert(result.title == instance.title)
-        XCTAssert(result.deviceName == instance.deviceName)
-        XCTAssert(result.priority == instance.priority)
+        assertEquals(result.body, first + second)
+        assertEquals(result.title, instance.title)
+        assertEquals(result.deviceName, instance.deviceName)
+        assertEquals(result.priority, instance.priority)
     }
     
     func testAddBodyWithLine()
@@ -89,10 +89,10 @@ class AromaRequestTests: XCTestCase
         let expected = "\(first)\n\n\(second)"
         
         let result = instance.addBody(first)
-            .addLine(2)
-            .addBody(second)
+                             .addLine(2)
+                             .addBody(second)
         
-        XCTAssert(result.body == expected)
+        assertNotEquals(result.body, expected)
     }
 
     func testWithDeviceName()
@@ -101,11 +101,11 @@ class AromaRequestTests: XCTestCase
         let newDevice = "new Device"
         let result = instance.withDeviceName(newDevice)
 
-        XCTAssert(result.deviceName == newDevice)
-        XCTAssert(result.body == instance.body)
-        XCTAssert(result.title == instance.title)
-        XCTAssert(result.priority == instance.priority)
-        XCTAssert(result != instance)
+        assertEquals(result.deviceName, newDevice)
+        assertEquals(result.body, instance.body)
+        assertEquals(result.title, instance.title)
+        assertEquals(result.priority, instance.priority)
+        assertNotEquals(result, instance)
     }
 
     func testWithUrgency()
@@ -114,10 +114,11 @@ class AromaRequestTests: XCTestCase
         let newUrgecy: AromaRequest.Priority = .high
         let result = instance.withPriority(newUrgecy)
 
-        XCTAssert(result.priority == newUrgecy)
-        XCTAssert(result.title == instance.title)
-        XCTAssert(result.body == instance.body)
-        XCTAssert(result.deviceName == instance.deviceName)
-        XCTAssert(result != instance)
+        assertEquals(result.priority, newUrgecy)
+        assertEquals(result.title, instance.title)
+        assertEquals(result.body, instance.body)
+        assertEquals(result.deviceName, instance.deviceName)
+        assertNotEquals(result, instance)
     }
+    
 }

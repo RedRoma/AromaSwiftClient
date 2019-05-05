@@ -6,29 +6,26 @@
 //  Copyright © 2016 RedRoma, Inc. All rights reserved.
 //
 
+import AlchemyGenerator
+import AlchemyTest
 import XCTest
 @testable import AromaSwiftClient
 
 let TEST_TOKEN_ID = "f8da3ef6-79f1-44fe-bb93-20e1bf111bee"
 
-class AromaSwiftClientTests: XCTestCase
+class AromaSwiftClientTests: AlchemyTest
 {
     
-    fileprivate var message: AromaRequest!
+    override var defaultAsyncTimeout: TimeInterval { return 10.0 }
     
-    fileprivate dynamic var isDone = false
+    fileprivate var message: AromaRequest!
    
-
-    override func setUp()
+    override func beforeEachTest()
     {
-        super.setUp()
-        
         message = AromaRequest()
         message.title = "some title"
-        message.body = "some body"
+        message.body = AlchemyGenerator.alphabeticString(ofSize: Int.random(in: 10...100))
         message.priority = .low
-        
-        isDone = false
         
         testDefaultValues()
         AromaClient.TOKEN_ID = TEST_TOKEN_ID
@@ -58,40 +55,58 @@ class AromaSwiftClientTests: XCTestCase
 
     func testMessageSend()
     {
+        asyncTest
+        { promise in
+            AromaClient.send(message: message, onError: onError)
+            {
+                promise.fulfill()
+            }
+        }
 
-        AromaClient.send(message: message, onError: onError, onDone: onDone)
-
-        while !isDone { }
     }
 
     func testBeginWithTitle()
     {
         let result = AromaClient.beginMessage(withTitle: message.title)
-        XCTAssertNotNil(result)
+        assertNotNil(result)
     }
     
     func testSendHighPriorityMessage()
     {
+        asyncTest
+        { promise in
+            
+            AromaClient.sendHighPriorityMessage(withTitle: "High Priority Test", withBody: message.body, onError: onError)
+            {
+                promise.fulfill()
+            }
+        }
         
-        AromaClient.sendHighPriorityMessage(withTitle: "High Priority Test", withBody: message.body, onError: onError, onDone: onDone)
-        
-        while !isDone { }
     }
     
     func testSendMediumPriorityMessage()
     {
+        asyncTest
+        { promise in
+            
+            AromaClient.sendMediumPriorityMessage(withTitle: "Medium Priority Test", onError: onError)
+            {
+                promise.fulfill()
+            }
+        }
         
-        AromaClient.sendMediumPriorityMessage(withTitle: "Medium Priority Test", onError: onError, onDone: onDone)
-        
-        while !isDone { }
     }
     
     func testSendLowPriorityMessage()
     {
-        
-        AromaClient.sendLowPriorityMessage(withTitle: "Low Priority Test", onError: onError, onDone: onDone)
-        
-        while !isDone { }
+        asyncTest
+        { promise in
+            
+            AromaClient.sendLowPriorityMessage(withTitle: "Low Priority Test", onError: onError)
+            {
+                promise.fulfill()
+            }
+        }
     }
     
     fileprivate func onError(_ ex: Error)
@@ -99,10 +114,4 @@ class AromaSwiftClientTests: XCTestCase
         XCTFail("Failed to send message: \(ex)")
     }
     
-    fileprivate func onDone()
-    {
-        print("Message sent!")
-        
-        self.isDone = true
-    }
 }
