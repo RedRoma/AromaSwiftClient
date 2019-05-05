@@ -11,7 +11,7 @@ import AlchemyTest
 import XCTest
 @testable import AromaSwiftClient
 
-let TEST_TOKEN_ID = "f8da3ef6-79f1-44fe-bb93-20e1bf111bee"
+fileprivate let TEST_TOKEN_ID = "321e4a08-c2d7-4776-b525-6d13ada716cd"
 
 class AromaSwiftClientTests: AlchemyTest
 {
