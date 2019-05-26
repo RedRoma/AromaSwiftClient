@@ -29,6 +29,7 @@ class AromaSwiftClientTests: AlchemyTest
         
         testDefaultValues()
         AromaClient.TOKEN_ID = TEST_TOKEN_ID
+        AromaClient.enabled = true
     }
 
     override func tearDown()
@@ -107,6 +108,18 @@ class AromaSwiftClientTests: AlchemyTest
                 promise.fulfill()
             }
         }
+    }
+    
+    func testWhenDisabled()
+    {
+        AromaClient.disable()
+        
+        var called = false
+        AromaClient.sendLowPriorityMessage(withTitle: "Title") {
+            called = true
+        }
+        
+        assertThat(called)
     }
     
     fileprivate func onError(_ ex: Error)

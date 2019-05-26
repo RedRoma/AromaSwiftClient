@@ -26,6 +26,26 @@ public class AromaClient
     
     //Defaults
     public static var deviceName: String = UIDevice.current.name
+    static var enabled: Bool = true
+    
+    /**
+        The client will send messages to the server.
+        By default the client is always enabled unless
+        explicitly disabled.
+    */
+    public static func enable()
+    {
+        enabled = true
+    }
+    
+    /**
+        The client will ignore all requests to send messages.
+        To enable the client again call `enable()`
+    */
+    public static func disable()
+    {
+        enabled = false
+    }
         
 
     //Async and Threading
@@ -76,6 +96,12 @@ extension AromaClient
 
     public static func send(message: AromaRequest, onError: AromaClient.OnError? = nil, onDone: AromaClient.OnDone? = nil)
     {
+        
+        guard enabled else
+        {
+            onDone?()
+            return
+        }
 
         guard !message.title.isEmpty else
         {
